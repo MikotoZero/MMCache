@@ -9,15 +9,17 @@
 import Foundation
 
 class DiskCache {
+    public let path: String
     
-    
+    init(path: String) {
+        self.path = path
+    }
 }
 
 // MARK: - Public
 // MARK: 数据操作
 extension DiskCache {
     public func set<T>(_ value: T, for key: String) where T: NSObject, T: NSCoding {
-        
     }
     
     public func set(pureSwift value: Encodable, for key: String) {

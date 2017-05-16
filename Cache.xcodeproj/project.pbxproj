@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17569FD01E84089C00EE7B68 /* DBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17569FCF1E84089C00EE7B68 /* DBTests.swift */; };
+		17569FD11E84B56200EE7B68 /* CacheObject+Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FEC471E83DF7A00CC96CD /* CacheObject+Operation.swift */; };
+		17569FD21E84B56700EE7B68 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179431551E82427800A6714E /* Encodable.swift */; };
 		1788011E1E835A7600F52EA1 /* MemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1788011D1E835A7600F52EA1 /* MemoryCacheTests.swift */; };
 		179431331E82422900A6714E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179431321E82422900A6714E /* AppDelegate.swift */; };
 		179431351E82422900A6714E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179431341E82422900A6714E /* ViewController.swift */; };
@@ -16,9 +19,8 @@
 		179431481E82422900A6714E /* CacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179431471E82422900A6714E /* CacheTests.swift */; };
 		179431561E82427800A6714E /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179431531E82427800A6714E /* DiskCache.swift */; };
 		179431571E82427800A6714E /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179431541E82427800A6714E /* MemoryCache.swift */; };
-		179431581E82427800A6714E /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179431551E82427800A6714E /* Encodable.swift */; };
 		179FEC0A1E83D37500CC96CD /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 179FEC081E83D37500CC96CD /* LICENSE */; };
-		179FEC0B1E83D37500CC96CD /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 179FEC091E83D37500CC96CD /* README.md */; };
+		179FEC0F1E83D96900CC96CD /* Cache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 179FEC0D1E83D96900CC96CD /* Cache.xcdatamodeld */; };
 		17ACB99E1E8262EF003B36C2 /* PureSwiftCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ACB99D1E8262EF003B36C2 /* PureSwiftCodableTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17569FCF1E84089C00EE7B68 /* DBTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBTests.swift; sourceTree = "<group>"; };
 		1788011D1E835A7600F52EA1 /* MemoryCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCacheTests.swift; sourceTree = "<group>"; };
 		1794312F1E82422900A6714E /* Cache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cache.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		179431321E82422900A6714E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +52,8 @@
 		179431551E82427800A6714E /* Encodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encodable.swift; sourceTree = "<group>"; };
 		179FEC081E83D37500CC96CD /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		179FEC091E83D37500CC96CD /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		179FEC0E1E83D96900CC96CD /* Cache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Cache.xcdatamodel; sourceTree = "<group>"; };
+		179FEC471E83DF7A00CC96CD /* CacheObject+Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CacheObject+Operation.swift"; sourceTree = "<group>"; };
 		17ACB99D1E8262EF003B36C2 /* PureSwiftCodableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PureSwiftCodableTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,6 +116,7 @@
 				179431471E82422900A6714E /* CacheTests.swift */,
 				1788011D1E835A7600F52EA1 /* MemoryCacheTests.swift */,
 				17ACB99D1E8262EF003B36C2 /* PureSwiftCodableTests.swift */,
+				17569FCF1E84089C00EE7B68 /* DBTests.swift */,
 			);
 			path = CacheTests;
 			sourceTree = "<group>";
@@ -118,11 +124,21 @@
 		179431521E82427800A6714E /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				179FEC0C1E83D94100CC96CD /* DataBase */,
 				179431541E82427800A6714E /* MemoryCache.swift */,
 				179431531E82427800A6714E /* DiskCache.swift */,
 				179431551E82427800A6714E /* Encodable.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		179FEC0C1E83D94100CC96CD /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				179FEC471E83DF7A00CC96CD /* CacheObject+Operation.swift */,
+				179FEC0D1E83D96900CC96CD /* Cache.xcdatamodeld */,
+			);
+			path = DataBase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,12 +247,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				179FEC0B1E83D37500CC96CD /* README.md in Sources */,
+				17569FD21E84B56700EE7B68 /* Encodable.swift in Sources */,
+				17569FD11E84B56200EE7B68 /* CacheObject+Operation.swift in Sources */,
 				179431351E82422900A6714E /* ViewController.swift in Sources */,
+				179FEC0F1E83D96900CC96CD /* Cache.xcdatamodeld in Sources */,
 				179431571E82427800A6714E /* MemoryCache.swift in Sources */,
 				179431331E82422900A6714E /* AppDelegate.swift in Sources */,
 				179431561E82427800A6714E /* DiskCache.swift in Sources */,
-				179431581E82427800A6714E /* Encodable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17ACB99E1E8262EF003B36C2 /* PureSwiftCodableTests.swift in Sources */,
+				17569FD01E84089C00EE7B68 /* DBTests.swift in Sources */,
 				1788011E1E835A7600F52EA1 /* MemoryCacheTests.swift in Sources */,
 				179431481E82422900A6714E /* CacheTests.swift in Sources */,
 			);
@@ -377,6 +395,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MG9EX24M7M;
 				INFOPLIST_FILE = Cache/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MM.Cache;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -390,6 +409,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MG9EX24M7M;
 				INFOPLIST_FILE = Cache/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MM.Cache;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,6 +478,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		179FEC0D1E83D96900CC96CD /* Cache.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				179FEC0E1E83D96900CC96CD /* Cache.xcdatamodel */,
+			);
+			currentVersion = 179FEC0E1E83D96900CC96CD /* Cache.xcdatamodel */;
+			path = Cache.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 179431271E82422900A6714E /* Project object */;
 }
