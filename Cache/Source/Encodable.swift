@@ -29,18 +29,18 @@ private class _EncoderWrap <T: Encodable>: NSObject, NSSecureCoding {
 
 // MARK: - Encodable 协议
 /// Encodable 协议， 给 纯swift 类型提供 序列化接口
-protocol Encodable {
+public protocol Encodable {
     func encode(with aCoder: NSCoder)
     init?(coder aDecoder: NSCoder)
 }
 
 // MARK: 把实例序列化为Data，通过Data反序列化实例的便捷方法
-extension Encodable {
+public extension Encodable {
     func archive() -> Data {
         return NSKeyedArchiver.archivedData(withRootObject: _EncoderWrap(self))
     }
     
-     init?(unarchive data: Data) {
+    init?(unarchive data: Data) {
         guard let wrap = NSKeyedUnarchiver.unarchiveObject(with: data) as? _EncoderWrap<Self> else { return nil }
         guard let object = wrap.object else { return nil }
         self = object
@@ -48,7 +48,7 @@ extension Encodable {
 }
 
 // MARK: - NSCoder、NSKeyedArchiver、NSKeyedUnarchiver 扩展，以支持 Encodable 类型
-extension NSCoder {
+public extension NSCoder {
     
     /// Encode 纯swift类型，需要此类型实现 Encodable 协议
     ///
@@ -86,7 +86,7 @@ extension NSCoder {
     }
 }
 
-extension NSKeyedArchiver {
+public extension NSKeyedArchiver {
     
     /// 序列化 纯swift类型的实例，需要此类型实现 Encodable 协议
     ///
@@ -97,7 +97,7 @@ extension NSKeyedArchiver {
     }
 }
 
-extension NSKeyedUnarchiver {
+public extension NSKeyedUnarchiver {
     
     /// 反序列化 纯swift类型的实例，需要此类型实现 Encodable 协议
     ///

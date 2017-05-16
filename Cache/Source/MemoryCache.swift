@@ -91,7 +91,7 @@ public class MemoryCache<Element> {
     // 数据缓存
     fileprivate var source: [String: Node] = [:]
     /// 热数据缓冲池大小，值为 capacity 一半，向上取整
-    fileprivate var threshold: Int { return Int(ceil(Double(capacity) / 2)) }
+    fileprivate var buffer: Int { return Int(ceil(Double(capacity) / 2)) }
 
     
     /// 缓存的容量，取自然数，设置小于等于0的值时默认取1
@@ -167,7 +167,7 @@ extension MemoryCache {
         // 把节点添加到热链
         hotChain.push(node)
         // 判断热链节点数是否大于阈值
-        guard hotChain.count > threshold else { return }
+        guard hotChain.count > buffer else { return }
         // 若大于，抛出热链末端节点
         guard let frozen = hotChain.dropTail() else { return }
         // 把要冷却的节点添加到冷链头部

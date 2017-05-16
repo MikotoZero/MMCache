@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-@testable import Cache
+import Cache
 
 
 // MARK: - Struct
