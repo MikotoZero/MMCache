@@ -30,7 +30,23 @@ private class CacheDBContext {
                     return NSPersistentStoreCoordinator()
                 #endif
         }
-        return NSPersistentStoreCoordinator(managedObjectModel: model)
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
+        do {
+            let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last?.appendingPathComponent("store.sqlite")
+            let options = [
+                NSMigratePersistentStoresAutomaticallyOption: true,
+                NSInferMappingModelAutomaticallyOption: true
+            ]
+            try coordinator.addPersistentStore(ofType: NSSQLiteStoreType,
+                                           configurationName: nil,
+                                           at: storeURL,
+                                           options: options)
+        } catch {
+            #if Debug
+                fatalError("addPersistentStore problems: \(error)")
+            #endif
+        }
+        return coordinator
     }()
     
     static var entity: NSEntityDescription {
@@ -49,6 +65,9 @@ private extension CacheDBContext {
                 try context.save()
             } catch {
                 // TODO: save fail ...
+                #if Debug
+                    fatalError("save fail: \(error)")
+                #endif
             }
         }
     }

@@ -13,17 +13,15 @@ import CoreData
 class DBTests: XCTestCase {
     
     func testSave() {
-        let cache = CacheObject()
+        
+        let cache = CacheObject.insert()
         cache.key = "foo"
         cache.size = 123456
         cache.path = "/foo"
-        CacheDBManager.shared.saveContext()
+        CacheObject.save()
         
-        let fetch = NSFetchRequest<CacheObject>(entityName: "CacheObject")
-        fetch.entity = CacheObject.entity()
-        fetch.predicate = NSPredicate(format: "key == %@", "foo")
-        let result = try? CacheDBManager.shared.persistentContainer.viewContext.fetch(fetch)
+        let result = CacheObject.get(with: "foo")
         XCTAssertNotNil(result)
-        XCTAssertEqual(result?.first?.path, cache.path)
+        XCTAssertEqual(result?.path, cache.path)
     }
 }
