@@ -53,7 +53,7 @@ public extension NSCoder {
     /// Encode 纯swift类型，需要此类型实现 Encodable 协议
     ///
     /// - Parameter instance: 要 encode 的实例
-    func encode<T>(rootPureSwift instance: T?) where T: Encodable {
+    func encodeRootObject<T>(_ instance: T?) where T: Encodable {
         guard let instance = instance else { return }
         encodeRootObject(_EncoderWrap(instance))
     }
@@ -63,7 +63,7 @@ public extension NSCoder {
     /// - Parameters:
     ///   - instance: 要 encode 的实例
     ///   - key: 对应的键
-    func encode<T>(pureSwift instance: T?, forKey key: String) where T: Encodable {
+    func encode<T>(_ instance: T?, forKey key: String) where T: Encodable {
         guard let instance = instance else { return }
         encode(_EncoderWrap(instance), forKey: key)
     }
@@ -71,7 +71,7 @@ public extension NSCoder {
     /// Decode 纯swift类型，需要此类型实现 Encodable 协议
     ///
     /// - Returns: 返回 decode 出的实例，若失败或类型不符合，则返回nil
-    func decodeRootPureSwiftInstanc<T>() -> T? where T: Encodable {
+    func decodeObject<T>() -> T? where T: Encodable {
         guard let wrap = decodeObject() as? _EncoderWrap<T> else { return nil }
         return wrap.object
     }
@@ -80,7 +80,7 @@ public extension NSCoder {
     ///
     /// - Parameter key: 对应的 encode 的 键
     /// - Returns: 返回 decode 出的实例，若失败或类型不符合，则返回nil
-    func decodePureSwiftInstanc<T>(forKey key: String) -> T? where T: Encodable {
+    func decodeObject<T>(forKey key: String) -> T? where T: Encodable {
         guard let wrap = decodeObject(forKey: key) as? _EncoderWrap<T> else { return nil }
         return wrap.object
     }
@@ -92,7 +92,7 @@ public extension NSKeyedArchiver {
     ///
     /// - Parameter instance: 要序列化的实例
     /// - Returns: 序列化后的 Data
-    static func archivedData<T>(withRootPureSwift instance: T) -> Data where T: Encodable {
+    static func archivedData<T>(withRootObject instance: T) -> Data where T: Encodable {
         return archivedData(withRootObject: _EncoderWrap(instance))
     }
 }
@@ -103,7 +103,7 @@ public extension NSKeyedUnarchiver {
     ///
     /// - Parameter data: 要反序列化的源 Data
     /// - Returns: 返回 解析 出的实例，若失败或类型不符合，则返回nil
-    static func unarchivePureSwiftInstance<T>(with data: Data) -> T? where T: Encodable {
+    static func unarchiveObject<T>(with data: Data) -> T? where T: Encodable {
         guard let wrap = unarchiveObject(with: data) as? _EncoderWrap<T> else { return nil }
         return wrap.object
     }

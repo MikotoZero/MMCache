@@ -158,31 +158,28 @@ extension DiskCache {
 // MARK: - Public
 // MARK: operations
 extension DiskCache {
-    public func set<T>(_ value: T?, for key: String, expriedTime time: TimeInterval = 3600 * 365 * 10) where T: NSObject, T: NSCoding {
+    public func set(_ value: Any?, for key: String, expriedTime time: TimeInterval = 3600 * 365 * 10) {
         guard let value = value else {
                 remove(with: key)
                 return
         }
-        let data = NSKeyedArchiver.archivedData(withRootObject: value)
+        let data: Data
+        if let value = value as? Encodable {
+            data = value.archive()
+        } else {
+            data = NSKeyedArchiver.archivedData(withRootObject: value)
+        }
         set(data: data, for: key, expriedTime: time)
     }
     
-    public func set(_ value: Encodable?, for key: String, expriedTime time: TimeInterval = 3600 * 365 * 10) {
-        guard let value = value else {
-                remove(with: key)
-                return
-        }
-        set(data: value.archive(), for: key, expriedTime: time)
-    }
-    
-    public func get<T>(with key: String) -> T? where T: NSObject, T: NSCoding {
+    public func get<T>(with key: String) -> T? where T: NSObject, T: NSCoder {
         guard let data = get(dataWith: key) else { return nil }
         return NSKeyedUnarchiver.unarchiveObject(with: data) as? T
     }
     
     public func get<T>(with key: String) -> T? where T: Encodable {
         guard let data = get(dataWith: key) else { return nil }
-        return T(unarchive: data)
+        return NSKeyedUnarchiver.unarchiveObject(with: data)
     }
     
     public func remove(with key: String) {
@@ -197,35 +194,19 @@ extension DiskCache {
 
 // MARK: operation with date
 extension DiskCache {
-    public func get<T>(before date: Date) -> [T] where T: NSObject, T: NSCoding {
-        return get(cacheObjcsWith: NSPredicate(format: "last_update_time < %@", date as NSDate))
-        .flatMap {
-            guard let key = $0.key else { return nil }
-            return get(with: key)
-        }
-    }
-    
-    public func get<T>(before date: Date) -> [T] where T: Encodable {
+    public func get(before date: Date) -> [Data] {
         return get(cacheObjcsWith: NSPredicate(format: "last_update_time < %@", date as NSDate))
             .flatMap {
                 guard let key = $0.key else { return nil }
-                return get(with: key)
+                return get(dataWith: key)
         }
     }
     
-    public func get<T>(after date: Date) -> [T] where T: NSObject, T: NSCoding {
+    public func get(after date: Date) -> [Data] {
         return get(cacheObjcsWith: NSPredicate(format: "last_update_time > %@", date as NSDate))
             .flatMap {
                 guard let key = $0.key else { return nil }
-                return get(with: key)
-        }
-    }
-    
-    public func get<T>(after date: Date) -> [T] where T: Encodable {
-        return get(cacheObjcsWith: NSPredicate(format: "last_update_time > %@", date as NSDate))
-            .flatMap {
-                guard let key = $0.key else { return nil }
-                return get(with: key)
+                return get(dataWith: key)
         }
     }
     
