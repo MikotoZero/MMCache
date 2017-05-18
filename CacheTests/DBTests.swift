@@ -12,22 +12,22 @@ import CoreData
 
 class DBTests: XCTestCase {
     
-    func testSave() {
-        let cache: CacheObject
-        if let _cache = CacheObject.get(with: "foo") {
-            cache = _cache
-            print("get:  ", cache.last_update_time as Any)
+    @discardableResult private func insertObject(_ key: String) -> CacheObject {
+        if let cache = CacheObject.get(with: key) {
             cache.last_update_time = Date() as NSDate
-            CacheObject.save()
+            return cache
         } else {
-            cache = CacheObject.insert()
-            cache.key = "foo"
-            cache.size = 123456
-            cache.path = "/foo"
+            let cache = CacheObject.insert()
+            cache.key = key
             cache.last_update_time = Date() as NSDate
-            print("insert:  ", cache.last_update_time!)
-            CacheObject.save()
+            return cache
         }
+    }
+    
+    
+    func testSave() {
+        let cache = insertObject("foo")
+        CacheObject.save()
         
         let result = CacheObject.get(with: "foo")
         XCTAssertNotNil(result)
@@ -40,5 +40,14 @@ class DBTests: XCTestCase {
         
         let beNil = CacheObject.get(with: "foo")
         XCTAssertNil(beNil)
+    }
+    
+    func testGetAll() {
+        for i in 0..<10 {
+            insertObject("\(i)")
+        }
+        CacheObject.save()
+        
+        XCTAssert(CacheObject.get().count == 10)
     }
 }
