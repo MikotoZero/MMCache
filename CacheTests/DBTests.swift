@@ -26,6 +26,8 @@ class DBTests: XCTestCase {
     
     
     func testSave() {
+        CacheObject.clean()
+
         let cache = insertObject("foo")
         CacheObject.save()
         
@@ -43,6 +45,8 @@ class DBTests: XCTestCase {
     }
     
     func testGetAll() {
+        CacheObject.clean()
+        
         for i in 0..<10 {
             insertObject("\(i)")
         }

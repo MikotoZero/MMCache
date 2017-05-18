@@ -255,5 +255,10 @@ extension DiskCache {
     }
 }
 
-
+// MARK: others operations
+extension DiskCache {
+    public func cleanAll() {
+        CacheObject.clean()
+    }
+}
 
