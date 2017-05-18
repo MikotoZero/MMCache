@@ -23,13 +23,13 @@ private extension String {
 }
 
 
-class DiskCache {
+public class DiskCache {
     public let basePath: URL
     
     public var fileNameFormatter: (String) -> String = { $0.md5 }
     
     public static let `default`: DiskCache =  {
-        guard var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
+        guard var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             fatalError("MMCahce.DiskCache Error: Get defualt DiskCache directory failed.")
         }
         path = path.appendingPathComponent("MMDiskCache")
@@ -39,13 +39,13 @@ class DiskCache {
     public init(path: URL) {
         self.basePath = path
         var isDirectory: ObjCBool = false
-        let existed = fileManager.fileExists(atPath: path.absoluteString, isDirectory: &isDirectory)
+        let existed = fileManager.fileExists(atPath: path.path, isDirectory: &isDirectory)
         if existed && !isDirectory.boolValue {
-                fatalError("MMCahce.DiskCache Error: DiskCache path directory is already existed while it isn't a directory")
+                fatalError("MMCahce.DiskCache Error: DiskCache path \"\(path.path)\" is already existed while it isn't a directory")
         }
         if !existed {
             do {
-                try fileManager.createDirectory(atPath: path.absoluteString, withIntermediateDirectories: true, attributes: nil)
+                try fileManager.createDirectory(atPath: path.path, withIntermediateDirectories: true, attributes: nil)
             } catch {
                     fatalError("MMCahce.DiskCache Error: Creat DiskCache directory failed. error: \(error)")
             }
@@ -101,7 +101,9 @@ extension DiskCache {
     }
     
     fileprivate func get(cacheObjcWith key: String) -> CacheObject? {
-        return CacheObject.get(with: key)
+        let objc = CacheObject.get(with: key)
+        guard objc?.expried_time?.compare(Date()) != .orderedAscending else { return nil }
+        return objc
     }
     
     fileprivate func update(cacheObjc objc: CacheObject, with data: Data, expriedTime time: TimeInterval) {
@@ -244,11 +246,11 @@ extension DiskCache {
 
 // MARK: status
 extension DiskCache {
-    var size: Int64 {
+    public var size: Int64 {
         return CacheObject.get().reduce(0) { $0 + $1.size }
     }
     
-    var count: Int {
+    public var count: Int {
         return CacheObject.get().count
     }
 }
