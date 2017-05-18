@@ -24,11 +24,7 @@ private class CacheDBContext {
             let modelURL = Bundle.main.url(forResource: "Cache", withExtension: "momd"),
             let model = NSManagedObjectModel(contentsOf: modelURL)
             else {
-                #if Debug
-                    fatalError("Load cache file fail.")
-                #else
-                    return NSPersistentStoreCoordinator()
-                #endif
+                fatalError("MMCache.DiskCache.CoreData Error: Load DB cache file fail.")
         }
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         do {
@@ -42,9 +38,7 @@ private class CacheDBContext {
                                            at: storeURL,
                                            options: options)
         } catch {
-            #if Debug
-                fatalError("addPersistentStore problems: \(error)")
-            #endif
+            fatalError("MMCache.DiskCache.CoreData Error: NSPersistentStoreCoordinator addPersistentStore fail. Error: \(error)")
         }
         return coordinator
     }()
@@ -60,24 +54,19 @@ private class CacheDBContext {
 private extension CacheDBContext {
 
     static func saveContext () {
-        if context.hasChanges {
-            do {
-                try context.save()
-            } catch {
-                // TODO: save fail ...
-                #if Debug
-                    fatalError("save fail: \(error)")
-                #endif
-            }
+        guard context.hasChanges  else { return }
+        do {
+            try context.save()
+        } catch {
+            fatalError("MMCache.DiskCache.CoreData Error: Save DB object fail. Error: \(error)")
         }
     }
 }
 
-extension CacheObject {
+internal extension CacheObject {
     
     class func insert() -> CacheObject {
         let objc = CacheObject(entity: CacheDBContext.entity, insertInto: CacheDBContext.context)
-        objc.creat_time = Date() as NSDate
         return objc
     }
     
@@ -97,18 +86,16 @@ extension CacheObject {
         }
     }
     
-    @nonobjc class func remove(with id: NSManagedObjectID) -> CacheObject {
-        let objc = CacheDBContext.context.object(with: id) as! CacheObject
-        CacheDBContext.context.delete(objc)
-        return objc
-    }
-    
-    @nonobjc class func remove(with key: String) -> CacheObject? {
+    @nonobjc  @discardableResult class func remove(with key: String) -> CacheObject? {
         guard let objc = get(with: NSPredicate(format: "key == %@", key)).first else { return nil }
         CacheDBContext.context.delete(objc)
         return objc
     }
     
+    @nonobjc class func remove(_ objc: CacheObject) {
+        CacheDBContext.context.delete(objc)
+    }
+
     
     class func rollback() {
         CacheDBContext.context.rollback()
