@@ -23,21 +23,24 @@ private extension String {
 }
 
 
+
 public class DiskCache {
     public let basePath: URL
-    
+    public let identifer: String
     public var fileNameFormatter: (String) -> String = { $0.md5 }
     
+    /// The Default DiskCache with basePath is "~/Documents/MMDiskCache" and identifer is MMDefaultDiskCache
     public static let `default`: DiskCache =  {
         guard var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             fatalError("MMCahce.DiskCache Error: Get defualt DiskCache directory failed.")
         }
         path = path.appendingPathComponent("MMDiskCache")
-        return DiskCache(path: path)
+        return DiskCache(path: path, identifer: "MMDefaultDiskCache")
     }()
     
-    public init(path: URL) {
+    public init(path: URL, identifer: String) {
         self.basePath = path
+        self.identifer = identifer
         var isDirectory: ObjCBool = false
         let existed = fileManager.fileExists(atPath: path.path, isDirectory: &isDirectory)
         if existed && !isDirectory.boolValue {
@@ -90,6 +93,7 @@ extension DiskCache {
     fileprivate func creat(cacheObjcWith key: String, data: Data, expriedTime time: TimeInterval) -> CacheObject {
         let objc = CacheObject.insert()
         objc.key = key
+        objc.cache_identifer = identifer
         let date = Date()
         objc.creat_time = date as NSDate
         objc.last_update_time = date as NSDate
@@ -101,7 +105,7 @@ extension DiskCache {
     }
     
     fileprivate func get(cacheObjcWith key: String) -> CacheObject? {
-        let objc = CacheObject.get(with: key)
+        let objc = CacheObject.get(with: key, identifer: identifer)
         guard objc?.expried_time?.compare(Date()) != .orderedAscending else { return nil }
         return objc
     }
@@ -194,31 +198,33 @@ extension DiskCache {
 
 // MARK: operation with date
 extension DiskCache {
-    public func get(before date: Date) -> [Data] {
-        return get(cacheObjcsWith: NSPredicate(format: "last_update_time < %@", date as NSDate))
+    public func get(before date: Date) -> [(String, Data)] {
+        return get(cacheObjcsWith: NSPredicate(format: "last_update_time < %@ AND cache_identifer = %@", date as NSDate, identifer))
             .flatMap {
                 guard let key = $0.key else { return nil }
-                return get(dataWith: key)
+                guard let data = get(dataWith: key) else { return nil }
+                return (key, data)
         }
     }
     
-    public func get(after date: Date) -> [Data] {
-        return get(cacheObjcsWith: NSPredicate(format: "last_update_time > %@", date as NSDate))
+    public func get(after date: Date) -> [(String, Data)] {
+        return get(cacheObjcsWith: NSPredicate(format: "last_update_time > %@ AND cache_identifer = %@", date as NSDate, identifer))
             .flatMap {
                 guard let key = $0.key else { return nil }
-                return get(dataWith: key)
+                guard let data = get(dataWith: key) else { return nil }
+                return (key, data)
         }
     }
     
     public func remove(before date: Date) -> Int {
-        return get(cacheObjcsWith: NSPredicate(format: "last_update_time < %@", date as NSDate)) {
+        return get(cacheObjcsWith: NSPredicate(format: "last_update_time < %@ AND cache_identifer = %@", date as NSDate, identifer)) {
             CacheObject.remove($0)
             self.deleteFile(with: $0)
         }.count
     }
     
     public func remove(after date: Date) -> Int {
-       return get(cacheObjcsWith: NSPredicate(format: "last_update_time > %@", date as NSDate)) {
+       return get(cacheObjcsWith: NSPredicate(format: "last_update_time > %@ AND cache_identifer = %@", date as NSDate, identifer)) {
             CacheObject.remove($0)
             self.deleteFile(with: $0)
         }.count

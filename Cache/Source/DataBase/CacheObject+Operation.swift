@@ -89,9 +89,9 @@ internal extension CacheObject {
         return objc
     }
     
-    @nonobjc class func get(with key: String) -> CacheObject? {
+    @nonobjc class func get(with key: String, identifer: String) -> CacheObject? {
         objc_sync_enter(CacheDBContext.context)
-        let objc = get(with: NSPredicate(format: "key == %@", key)).first
+        let objc = get(with: NSPredicate(format: "key = %@ AND cache_identifer = %@", key, identifer)).first
         objc_sync_exit(CacheDBContext.context)
         return objc
     }
