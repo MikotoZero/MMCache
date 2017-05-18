@@ -49,13 +49,13 @@ class Baz: Encodable {
 
     func encode(with aCoder: NSCoder) {
         aCoder.encode(quz, forKey: "quz")
-        aCoder.encode(pureSwift: foo, forKey: "foo")
+        aCoder.encode(foo, forKey: "foo")
     }
     
     required init?(coder aDecoder: NSCoder) {
         guard let quz = aDecoder.decodeObject(forKey: "quz") as? String else { return nil }
         self.quz = quz
-        self.foo = aDecoder.decodePureSwiftInstanc(forKey: "foo")
+        self.foo = aDecoder.decodeObject(forKey: "foo")
     }
 }
 

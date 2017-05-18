@@ -23,6 +23,7 @@
 		179FEC0F1E83D96900CC96CD /* Cache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 179FEC0D1E83D96900CC96CD /* Cache.xcdatamodeld */; };
 		17ACB99E1E8262EF003B36C2 /* PureSwiftCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ACB99D1E8262EF003B36C2 /* PureSwiftCodableTests.swift */; };
 		17EF1BD11ECC403E0054EA11 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17EF1BD01ECC403E0054EA11 /* CommonCrypto.framework */; };
+		17EF1BD71ECD95AE0054EA11 /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF1BD61ECD95AE0054EA11 /* DiskCacheTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		179FEC471E83DF7A00CC96CD /* CacheObject+Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CacheObject+Operation.swift"; sourceTree = "<group>"; };
 		17ACB99D1E8262EF003B36C2 /* PureSwiftCodableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PureSwiftCodableTests.swift; sourceTree = "<group>"; };
 		17EF1BD01ECC403E0054EA11 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CommonCrypto.framework; sourceTree = "<group>"; };
+		17EF1BD61ECD95AE0054EA11 /* DiskCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCacheTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				1788011D1E835A7600F52EA1 /* MemoryCacheTests.swift */,
 				17ACB99D1E8262EF003B36C2 /* PureSwiftCodableTests.swift */,
 				17569FCF1E84089C00EE7B68 /* DBTests.swift */,
+				17EF1BD61ECD95AE0054EA11 /* DiskCacheTests.swift */,
 			);
 			path = CacheTests;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17EF1BD71ECD95AE0054EA11 /* DiskCacheTests.swift in Sources */,
 				17ACB99E1E8262EF003B36C2 /* PureSwiftCodableTests.swift in Sources */,
 				17569FD01E84089C00EE7B68 /* DBTests.swift in Sources */,
 				1788011E1E835A7600F52EA1 /* MemoryCacheTests.swift in Sources */,
