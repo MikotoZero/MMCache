@@ -44,7 +44,7 @@ class DiskCacheTests: XCTestCase {
     }
     
     func testSave() {
-        DiskCache.default.cleanAll()
+        DiskCache.default.clean()
         
         DiskCache.default.set("foo", for: "str")
         DiskCache.default.set(100, for: "int")
