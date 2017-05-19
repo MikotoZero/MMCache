@@ -82,9 +82,18 @@ private extension CacheDBContext {
 
 internal extension CacheObject {
     
-    class func insert() -> CacheObject {
+    @discardableResult class func insert(with key: String, identifer: String, path: String, dataSize size: Int64, expriedInterval interval: TimeInterval) -> CacheObject {
         objc_sync_enter(CacheDBContext.context)
         let objc = CacheObject(entity: CacheDBContext.entity, insertInto: CacheDBContext.context)
+        objc.cache_identifer = identifer
+        objc.key = key
+        objc.path = path
+        objc.data_size = size
+        let date = Date()
+        objc.creat_time = date as NSDate
+        objc.last_update_time = date as NSDate
+        objc.expried_time = Date(timeInterval: interval, since: date) as NSDate
+        CacheDBContext.saveContext()
         objc_sync_exit(CacheDBContext.context)
         return objc
     }
@@ -96,53 +105,65 @@ internal extension CacheObject {
         return objc
     }
     
+    @nonobjc class func get(identifer: String) -> [CacheObject] {
+        objc_sync_enter(CacheDBContext.context)
+        let objcs = get(with: NSPredicate(format: "cache_identifer = %@", identifer))
+        objc_sync_exit(CacheDBContext.context)
+        return objcs
+    }
+    
     @nonobjc class func get(with predicate: NSPredicate? = nil) -> [CacheObject] {
         objc_sync_enter(CacheDBContext.context)
         let fetch = NSFetchRequest<CacheObject>(entityName: "CacheObject")
         fetch.entity = CacheDBContext.entity
         fetch.predicate = predicate
         let result: [CacheObject]
-        do {
-            result = try CacheDBContext.context.fetch(fetch)
-        } catch {
-            result = []
-        }
+        result = (try? CacheDBContext.context.fetch(fetch)) ?? []
         objc_sync_exit(CacheDBContext.context)
         return result
     }
     
-    @discardableResult class func remove(with key: String) -> CacheObject? {
+    func update(with size: Int64, expriedInterval interval: TimeInterval) {
         objc_sync_enter(CacheDBContext.context)
-        guard let objc = get(with: NSPredicate(format: "key == %@", key)).first else {
+        self.data_size = size
+        let date = Date()
+        self.last_update_time = date as NSDate
+        self.expried_time = Date(timeInterval: interval, since: date) as NSDate
+        CacheDBContext.saveContext()
+        objc_sync_exit(CacheDBContext.context)
+    }
+    
+    @discardableResult class func remove(with key: String, identifer: String) -> CacheObject? {
+        objc_sync_enter(CacheDBContext.context)
+        guard let objc = get(with: NSPredicate(format: "key == %@ AND cache_identifer = %@", key, identifer)).first else {
             objc_sync_exit(CacheDBContext.context)
             return nil
         }
         CacheDBContext.context.delete(objc)
+        CacheDBContext.saveContext()
         objc_sync_exit(CacheDBContext.context)
         return objc
     }
     
-    class func remove(_ objc: CacheObject) {
+    @discardableResult class func remove(with predicate: NSPredicate) -> [CacheObject] {
         objc_sync_enter(CacheDBContext.context)
-        CacheDBContext.context.delete(objc)
-        objc_sync_exit(CacheDBContext.context)
-    }
-    
-    class func clean() {
-        objc_sync_enter(CacheDBContext.context)
-        CacheDBContext.cleanPersistentStore()
-        objc_sync_exit(CacheDBContext.context)
-    }
-    
-    class func rollback() {
-        objc_sync_enter(CacheDBContext.context)
-        CacheDBContext.context.rollback()
-        objc_sync_exit(CacheDBContext.context)
-    }
-    
-    class func save() {
-        objc_sync_enter(CacheDBContext.context)
+        let objcs = get(with: predicate)
+        objcs.forEach {
+            CacheDBContext.context.delete($0)
+        }
         CacheDBContext.saveContext()
         objc_sync_exit(CacheDBContext.context)
+        return objcs
+    }
+    
+    @discardableResult class func clean(identifer: String) -> [CacheObject] {
+        objc_sync_enter(CacheDBContext.context)
+        let objcs = get(with: NSPredicate(format: "cache_identifer = %@", identifer))
+        objcs.forEach {
+            CacheDBContext.context.delete($0)
+        }
+        CacheDBContext.saveContext()
+        objc_sync_exit(CacheDBContext.context)
+        return objcs
     }
 }

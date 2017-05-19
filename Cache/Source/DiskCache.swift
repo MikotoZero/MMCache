@@ -90,65 +90,33 @@ extension DiskCache {
 
 // MARK: cacheObject operations
 extension DiskCache {
-    fileprivate func creat(cacheObjcWith key: String, data: Data, expriedTime time: TimeInterval) -> CacheObject {
-        let objc = CacheObject.insert()
-        objc.key = key
-        objc.cache_identifer = identifer
-        let date = Date()
-        objc.creat_time = date as NSDate
-        objc.last_update_time = date as NSDate
-        objc.expried_time = Date(timeInterval: time, since: date) as NSDate
-        objc.size = Int64(data.count)
-        objc.path = fileNameFormatter(key)
-        CacheObject.save()
-        return objc
-    }
     
     fileprivate func get(cacheObjcWith key: String) -> CacheObject? {
-        let objc = CacheObject.get(with: key, identifer: identifer)
-        guard objc?.expried_time?.compare(Date()) != .orderedAscending else { return nil }
-        return objc
-    }
-    
-    fileprivate func update(cacheObjc objc: CacheObject, with data: Data, expriedTime time: TimeInterval) {
-        let date = Date()
-        objc.last_update_time = date as NSDate
-        objc.expried_time = Date(timeInterval: time, since: date) as NSDate
-        objc.size =  Int64(data.count)
-        CacheObject.save()
-    }
-    
-    fileprivate func remove(cacheObjcWith key: String) -> CacheObject? {
-        guard let objc = CacheObject.remove(with: key) else { return nil }
-        CacheObject.save()
-        return objc
-    }
-    
-    @discardableResult fileprivate func get(cacheObjcsWith predicate: NSPredicate, operation: ((CacheObject) -> Void)? = nil) -> [CacheObject] {
-        let objcs = CacheObject.get(with: predicate)
-        if let operation = operation {
-            objcs.forEach(operation)
+        guard let objc = CacheObject.get(with: key, identifer: identifer) else { return nil }
+        guard objc.expried_time?.compare(Date()) != .orderedAscending else {
+            deleteFile(with: objc)
+            return nil
         }
-        CacheObject.save()
-        return objcs
-    }
-}
-
-// MARK: utils
-extension DiskCache {
-    fileprivate func fileFullPath(with key: String) -> String {
-        return basePath.appendingPathComponent(fileNameFormatter(key)).absoluteString
+        return objc
     }
 }
 
 // MARK: data operations
 extension DiskCache {
-    fileprivate func set(data: Data, for key: String, expriedTime time: TimeInterval) {
+    private func fileFullPath(with key: String) -> String {
+        return basePath.appendingPathComponent(fileNameFormatter(key)).absoluteString
+    }
+    
+    fileprivate func set(data: Data, for key: String, expriedInterval interval: TimeInterval) {
         if let objc = get(cacheObjcWith: key) {
-            update(cacheObjc: objc, with: data, expriedTime: time)
+            objc.update(with: Int64(data.count), expriedInterval: interval)
             writeToFile(for: data, with: objc)
         } else {
-            let objc = creat(cacheObjcWith: key, data: data, expriedTime: time)
+            let objc = CacheObject.insert(with: key,
+                                          identifer: identifer,
+                                          path: fileNameFormatter(key),
+                                          dataSize: Int64(data.count),
+                                          expriedInterval: interval)
             writeToFile(for: data, with: objc)
         }
     }
@@ -162,7 +130,7 @@ extension DiskCache {
 // MARK: - Public
 // MARK: operations
 extension DiskCache {
-    public func set(_ value: Any?, for key: String, expriedTime time: TimeInterval = 3600 * 365 * 10) {
+    public func set(_ value: Any?, for key: String, expriedInterval interval: TimeInterval = 3600 * 365 * 10) {
         guard let value = value else {
                 remove(with: key)
                 return
@@ -173,7 +141,7 @@ extension DiskCache {
         } else {
             data = NSKeyedArchiver.archivedData(withRootObject: value)
         }
-        set(data: data, for: key, expriedTime: time)
+        set(data: data, for: key, expriedInterval: interval)
     }
     
     public func get<T>(with key: String) -> T? where T: NSObject, T: NSCoder {
@@ -187,7 +155,7 @@ extension DiskCache {
     }
     
     public func remove(with key: String) {
-        guard let objc = remove(cacheObjcWith: key) else { return }
+        guard let objc = CacheObject.remove(with: key, identifer: identifer) else { return }
         deleteFile(with: objc)
     }
     
@@ -199,53 +167,90 @@ extension DiskCache {
 // MARK: operation with date
 extension DiskCache {
     public func get(before date: Date) -> [(String, Data)] {
-        return get(cacheObjcsWith: NSPredicate(format: "last_update_time < %@ AND cache_identifer = %@", date as NSDate, identifer))
-            .flatMap {
-                guard let key = $0.key else { return nil }
-                guard let data = get(dataWith: key) else { return nil }
-                return (key, data)
+        return CacheObject.get(with: NSPredicate(format: "last_update_time < %@ AND cache_identifer = %@", date as NSDate, identifer)).flatMap {
+            guard let key = $0.key else { return nil }
+            guard let data = readFromFile(with: $0) else { return nil }
+            return (key, data)
         }
     }
     
     public func get(after date: Date) -> [(String, Data)] {
-        return get(cacheObjcsWith: NSPredicate(format: "last_update_time > %@ AND cache_identifer = %@", date as NSDate, identifer))
-            .flatMap {
-                guard let key = $0.key else { return nil }
-                guard let data = get(dataWith: key) else { return nil }
-                return (key, data)
+        return CacheObject.get(with: NSPredicate(format: "last_update_time > %@ AND cache_identifer = %@", date as NSDate, identifer)).flatMap {
+            guard let key = $0.key else { return nil }
+            guard let data = readFromFile(with: $0) else { return nil }
+            return (key, data)
         }
     }
     
     public func remove(before date: Date) -> Int {
-        return get(cacheObjcsWith: NSPredicate(format: "last_update_time < %@ AND cache_identifer = %@", date as NSDate, identifer)) {
-            CacheObject.remove($0)
-            self.deleteFile(with: $0)
-        }.count
+        let objcs = CacheObject.remove(with: NSPredicate(format: "last_update_time < %@ AND cache_identifer = %@", date as NSDate, identifer))
+        objcs.forEach {
+            deleteFile(with: $0)
+        }
+        return objcs.count
     }
     
     public func remove(after date: Date) -> Int {
-       return get(cacheObjcsWith: NSPredicate(format: "last_update_time > %@ AND cache_identifer = %@", date as NSDate, identifer)) {
-            CacheObject.remove($0)
-            self.deleteFile(with: $0)
-        }.count
+        let objcs = CacheObject.remove(with: NSPredicate(format: "last_update_time > %@ AND cache_identifer = %@", date as NSDate, identifer))
+        objcs.forEach {
+            deleteFile(with: $0)
+        }
+        return objcs.count
+    }
+}
+
+// MARK: operations with size
+extension DiskCache {
+    public func get(larger size: Int64) -> [(String, Data)] {
+        return CacheObject.get(with: NSPredicate(format: "size >= %d AND cache_identifer = %@", size, identifer)).flatMap {
+            guard let key = $0.key else { return nil }
+            guard let data = readFromFile(with: $0) else { return nil }
+            return (key, data)
+        }
+    }
+    
+    public func get(lesser size: Int64) -> [(String, Data)] {
+        return CacheObject.get(with: NSPredicate(format: "size <= %d AND cache_identifer = %@", size, identifer)).flatMap {
+            guard let key = $0.key else { return nil }
+            guard let data = readFromFile(with: $0) else { return nil }
+            return (key, data)
+        }
+    }
+    
+    public func remove(larger size: Int64) -> Int {
+        let objcs = CacheObject.remove(with: NSPredicate(format: "size >= %d AND cache_identifer = %@", size, identifer))
+        objcs.forEach {
+            deleteFile(with: $0)
+        }
+        return objcs.count
+    }
+    
+    public func remove(lesser size: Int64) -> Int {
+        let objcs = CacheObject.remove(with: NSPredicate(format: "size <= %d AND cache_identifer = %@", size, identifer))
+        objcs.forEach {
+            deleteFile(with: $0)
+        }
+        return objcs.count
     }
 }
 
 // MARK: status
 extension DiskCache {
     public var size: Int64 {
-        return CacheObject.get().reduce(0) { $0 + $1.size }
+        return CacheObject.get(identifer: identifer).reduce(0) { $0 + $1.data_size }
     }
     
     public var count: Int {
-        return CacheObject.get().count
+        return CacheObject.get(identifer: identifer).count
     }
 }
 
 // MARK: others operations
 extension DiskCache {
-    public func cleanAll() {
-        CacheObject.clean()
+    public func clean() {
+        CacheObject.clean(identifer: identifer).forEach {
+            deleteFile(with: $0)
+        }
     }
 }
 
