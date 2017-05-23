@@ -35,6 +35,8 @@ class TestPureSwiftClass: Encodable {
 
 class DiskCacheTests: XCTestCase {
     
+    let diskCache = DiskCache(path: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent("DiskCacheTest"), identifer: "DiskCacheTest")
+    
     override func setUp() {
         super.setUp()
     }
@@ -44,16 +46,16 @@ class DiskCacheTests: XCTestCase {
     }
     
     func testSave() {
-        DiskCache.default.clean()
+        diskCache.clean()
         
-        DiskCache.default.set("foo", for: "str")
-        DiskCache.default.set(100, for: "int")
+        diskCache.set("foo", for: "str")
+        diskCache.set(100, for: "int")
         
         let inner = TestPureSwiftClass(i: 0, s: "none", m: nil)
         let objc = TestPureSwiftClass(i: 1, s: "str", m: inner)
-        DiskCache.default.set(objc, for: "objc")
+        diskCache.set(objc, for: "objc")
         
-        XCTAssertEqual(DiskCache.default.count, 3)
+        XCTAssertEqual(diskCache.count, 3)
     }
     
 }
