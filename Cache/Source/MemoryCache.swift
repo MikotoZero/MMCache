@@ -75,6 +75,12 @@ private extension _List {
         remove(temp)
         return temp
     }
+    
+    func reset() {
+        head = nil
+        tail = nil
+        count = 0
+    }
 }
 
 // MARK: - 内存缓存
@@ -268,5 +274,15 @@ extension MemoryCache {
             }
         }
         get { return get(for: key) }
+    }
+}
+
+extension MemoryCache {
+    public func clean() {
+        pthread_mutex_lock(lock)
+        hotChain.reset()
+        coldChain.reset()
+        source = [:]
+        pthread_mutex_unlock(lock)
     }
 }

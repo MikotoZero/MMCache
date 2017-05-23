@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		17271A4D1ED2878E008DE7FE /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17271A4C1ED2878E008DE7FE /* Keys.swift */; };
 		17569FD01E84089C00EE7B68 /* DBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17569FCF1E84089C00EE7B68 /* DBTests.swift */; };
 		17569FD11E84B56200EE7B68 /* CacheObject+Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179FEC471E83DF7A00CC96CD /* CacheObject+Operation.swift */; };
 		17569FD21E84B56700EE7B68 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 179431551E82427800A6714E /* Encodable.swift */; };
@@ -23,6 +24,7 @@
 		179FEC0F1E83D96900CC96CD /* Cache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 179FEC0D1E83D96900CC96CD /* Cache.xcdatamodeld */; };
 		17ACB99E1E8262EF003B36C2 /* PureSwiftCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17ACB99D1E8262EF003B36C2 /* PureSwiftCodableTests.swift */; };
 		17EF1BD11ECC403E0054EA11 /* CommonCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17EF1BD01ECC403E0054EA11 /* CommonCrypto.framework */; };
+		17EF1BD31ECD31E90054EA11 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF1BD21ECD31E90054EA11 /* Cache.swift */; };
 		17EF1BD71ECD95AE0054EA11 /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EF1BD61ECD95AE0054EA11 /* DiskCacheTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		17271A4C1ED2878E008DE7FE /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		17569FCF1E84089C00EE7B68 /* DBTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBTests.swift; sourceTree = "<group>"; };
 		1788011D1E835A7600F52EA1 /* MemoryCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCacheTests.swift; sourceTree = "<group>"; };
 		1794312F1E82422900A6714E /* Cache.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cache.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -58,6 +61,7 @@
 		179FEC471E83DF7A00CC96CD /* CacheObject+Operation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CacheObject+Operation.swift"; sourceTree = "<group>"; };
 		17ACB99D1E8262EF003B36C2 /* PureSwiftCodableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PureSwiftCodableTests.swift; sourceTree = "<group>"; };
 		17EF1BD01ECC403E0054EA11 /* CommonCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CommonCrypto.framework; sourceTree = "<group>"; };
+		17EF1BD21ECD31E90054EA11 /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		17EF1BD61ECD95AE0054EA11 /* DiskCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCacheTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +139,8 @@
 				179431541E82427800A6714E /* MemoryCache.swift */,
 				179431531E82427800A6714E /* DiskCache.swift */,
 				179431551E82427800A6714E /* Encodable.swift */,
+				17EF1BD21ECD31E90054EA11 /* Cache.swift */,
+				17271A4C1ED2878E008DE7FE /* Keys.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -264,10 +270,12 @@
 			files = (
 				17569FD21E84B56700EE7B68 /* Encodable.swift in Sources */,
 				17569FD11E84B56200EE7B68 /* CacheObject+Operation.swift in Sources */,
+				17EF1BD31ECD31E90054EA11 /* Cache.swift in Sources */,
 				179431351E82422900A6714E /* ViewController.swift in Sources */,
 				179FEC0F1E83D96900CC96CD /* Cache.xcdatamodeld in Sources */,
 				179431571E82427800A6714E /* MemoryCache.swift in Sources */,
 				179431331E82422900A6714E /* AppDelegate.swift in Sources */,
+				17271A4D1ED2878E008DE7FE /* Keys.swift in Sources */,
 				179431561E82427800A6714E /* DiskCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,15 +29,14 @@ public class DiskCache {
     public let identifer: String
     public var fileNameFormatter: (String) -> String = { $0.md5 }
     
-    /// The Default DiskCache with basePath is "~/Documents/MMDiskCache" and identifer is MMDefaultDiskCache
-    public static let `default`: DiskCache =  {
-        guard var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            fatalError("MMCahce.DiskCache Error: Get defualt DiskCache directory failed.")
-        }
-        path = path.appendingPathComponent("MMDiskCache")
-        return DiskCache(path: path, identifer: "MMDefaultDiskCache")
-    }()
-    
+//    /// The Default DiskCache with basePath is "~/Documents/MMDiskCache" and identifer is MMDefaultDiskCache
+//    public static let `default`: DiskCache =  {
+//        guard var path = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+//            fatalError("MMCahce.DiskCache Error: Get defualt DiskCache directory failed.")
+//        }
+//        path = path.appendingPathComponent("MMDiskCache")
+//        return DiskCache(path: path, identifer: "MMDefaultDiskCache")
+//    }()
     public init(path: URL, identifer: String) {
         self.basePath = path
         self.identifer = identifer
@@ -53,7 +52,6 @@ public class DiskCache {
                     fatalError("MMCahce.DiskCache Error: Creat DiskCache directory failed. error: \(error)")
             }
         }
-        
     }
     
     // MARK: private properties
