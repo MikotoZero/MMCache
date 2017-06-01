@@ -8,7 +8,7 @@
 
 import Foundation
 import XCTest
-import Cache
+import MMCache
 
 
 // MARK: - Struct

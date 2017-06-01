@@ -13,9 +13,9 @@ public class Cache {
     public static let `default` = Cache(withIdentifer: "MMDefaultCache", directoryName: "MMCache")
     
     public init(withIdentifer identifer: String, directoryName name: String? = nil, memoryCapacity capacity: Int = 1000, memoryTrimLevel level: UInt32 = 2) {
-        documentDC = DiskCache(path: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(name ?? identifer), identifer: identifer + "_document")
-        cacheDC = DiskCache(path: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent(name ?? identifer), identifer: identifer + "_cache")
-        tempDC = DiskCache(path: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(name ?? identifer), identifer: identifer + "_temp")
+        documentDC = DiskCache(path: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(name ?? identifer), identifer: identifer)
+        cacheDC = DiskCache(path: FileManager.default.urls(for: .cachesDirectory, in: .userDomainMask).first!.appendingPathComponent(name ?? identifer), identifer: identifer)
+        tempDC = DiskCache(path: FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.appendingPathComponent(name ?? identifer), identifer: identifer)
         memoryCache = MemoryCache(capacity: capacity, trimLevel: level)
     }
     

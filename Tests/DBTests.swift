@@ -8,7 +8,7 @@
 
 import XCTest
 import CoreData
-@testable import Cache
+@testable import MMCache
 
 private let id = "DBTests"
 

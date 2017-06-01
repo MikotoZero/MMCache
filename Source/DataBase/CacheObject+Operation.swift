@@ -21,7 +21,8 @@ private class CacheDBContext {
     
     static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         guard
-            let modelURL = Bundle.main.url(forResource: "Cache", withExtension: "momd"),
+            let bundle = Bundle(identifier: "com.MikotoZero.MMCache"),
+            let modelURL = bundle.url(forResource: "MMCache", withExtension: "momd"),
             let model = NSManagedObjectModel(contentsOf: modelURL)
             else {
                 fatalError("MMCache.DiskCache.CoreData Error: Load DB cache file fail.")

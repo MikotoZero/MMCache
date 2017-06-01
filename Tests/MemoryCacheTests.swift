@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Cache
+import MMCache
 
 class MemoryCacheTests: XCTestCase {
     let cache = MemoryCache<String>(capacity: 20)

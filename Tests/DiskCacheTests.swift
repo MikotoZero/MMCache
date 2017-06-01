@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import Cache
+import MMCache
 
 class TestPureSwiftClass: Encodable {
     let intL: Int
