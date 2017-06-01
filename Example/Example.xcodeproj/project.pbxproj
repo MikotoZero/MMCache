@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		170D32871EDFF44B00BE9450 /* MMCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170D32861EDFF44B00BE9450 /* MMCache.framework */; };
-		170D32881EDFF44E00BE9450 /* MMCache.framework in Embedded Frameworks */ = {isa = PBXBuildFile; fileRef = 170D32861EDFF44B00BE9450 /* MMCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		170D32971EE025B300BE9450 /* MMCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 170D32961EE025B300BE9450 /* MMCache.framework */; };
+		170D32981EE025B900BE9450 /* MMCache.framework in Embedded Frameworks */ = {isa = PBXBuildFile; fileRef = 170D32961EE025B300BE9450 /* MMCache.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		17EA16FC1EDE9A74003B74BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16FB1EDE9A74003B74BF /* AppDelegate.swift */; };
 		17EA16FE1EDE9A74003B74BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16FD1EDE9A74003B74BF /* ViewController.swift */; };
 		17EA17011EDE9A74003B74BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17EA16FF1EDE9A74003B74BF /* Main.storyboard */; };
@@ -23,7 +23,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				170D32881EDFF44E00BE9450 /* MMCache.framework in Embedded Frameworks */,
+				170D32981EE025B900BE9450 /* MMCache.framework in Embedded Frameworks */,
 			);
 			name = "Embedded Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -31,7 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		170D32861EDFF44B00BE9450 /* MMCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MMCache.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MMCache-cmixswnnitpsticgfrxrwxpgazzu/Build/Products/Debug-iphonesimulator/MMCache.framework"; sourceTree = "<group>"; };
+		170D32961EE025B300BE9450 /* MMCache.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MMCache.framework; path = "../../../../Library/Developer/Xcode/DerivedData/MMCache-cmixswnnitpsticgfrxrwxpgazzu/Build/Products/Debug-iphoneos/MMCache.framework"; sourceTree = "<group>"; };
 		17EA16F81EDE9A74003B74BF /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17EA16FB1EDE9A74003B74BF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		17EA16FD1EDE9A74003B74BF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,17 +46,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				170D32871EDFF44B00BE9450 /* MMCache.framework in Frameworks */,
+				170D32971EE025B300BE9450 /* MMCache.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		170D32851EDFF44B00BE9450 /* Frameworks */ = {
+		170D32951EE025B300BE9450 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				170D32861EDFF44B00BE9450 /* MMCache.framework */,
+				170D32961EE025B300BE9450 /* MMCache.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -66,7 +66,7 @@
 			children = (
 				17EA16FA1EDE9A74003B74BF /* Example */,
 				17EA16F91EDE9A74003B74BF /* Products */,
-				170D32851EDFF44B00BE9450 /* Frameworks */,
+				170D32951EE025B300BE9450 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

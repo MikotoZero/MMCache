@@ -12,11 +12,11 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
 
   s.source       = { :git => "https://github.com/MikotoZero/MMCache.git", :tag => s.version }
-  s.source_files  = "Source/**/*.{h,swift,xcdatamodeld}"
-  # s.exclude_files = "Classes/Exclude"
+  s.source_files  = "Source/**/*.{h,swift}"
+  s.resource = "Source/DataBase/*.xcdatamodeld"
+  s.frameworks = 'CoreData'
 
   s.requires_arc = true
-  s.xcconfig                        = { 'HEADER_SEARCH_PATHS' => '"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap"' }
   s.pod_target_xcconfig     =  {
       'SWIFT_VERSION' => '3.0',
   }
