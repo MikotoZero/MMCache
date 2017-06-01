@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		170D328C1EE0030F00BE9450 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 170D32891EE0030F00BE9450 /* LICENSE */; };
 		17655D4F1ED42E59009CA624 /* MMCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17655D4D1ED42E59009CA624 /* MMCacheTests.swift */; };
 		17655D541ED42E9D009CA624 /* MMCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 17655D521ED42E9D009CA624 /* MMCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		17EA16B71EDE97C2003B74BF /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16AC1EDE97C2003B74BF /* Cache.swift */; };
@@ -55,6 +56,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		170D32891EE0030F00BE9450 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		170D328A1EE0030F00BE9450 /* MMCache.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; fileEncoding = 4; lineEnding = 0; path = MMCache.podspec; sourceTree = "<group>"; usesTabs = 0; };
+		170D328B1EE0030F00BE9450 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		17655D301ED428F4009CA624 /* MMCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MMCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		17655D391ED428F4009CA624 /* MMCacheTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MMCacheTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17655D4C1ED42E59009CA624 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -96,6 +100,9 @@
 		17655D261ED428F4009CA624 = {
 			isa = PBXGroup;
 			children = (
+				170D32891EE0030F00BE9450 /* LICENSE */,
+				170D328B1EE0030F00BE9450 /* README.md */,
+				170D328A1EE0030F00BE9450 /* MMCache.podspec */,
 				17655D501ED42E9D009CA624 /* Source */,
 				17655D4B1ED42E59009CA624 /* Tests */,
 				17655D311ED428F4009CA624 /* Products */,
@@ -251,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				170D328C1EE0030F00BE9450 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,15 +452,13 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MG9EX24M7M;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Source/Framework",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap",
@@ -478,15 +484,13 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MG9EX24M7M;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Source/Framework",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap",
@@ -548,6 +552,7 @@
 				170D324C1EDEC09000BE9450 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17655D2A1ED428F4009CA624 /* Build configuration list for PBXProject "MMCache" */ = {
 			isa = XCConfigurationList;
