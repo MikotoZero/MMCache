@@ -7,28 +7,68 @@
 //
 
 import XCTest
+import MMCache
+
+private func `do`(_ block: () -> Void) {
+    block()
+}
 
 class MMCacheTests: XCTestCase {
     
+    let cache = Cache(withIdentifer: "MMCacheTest")
+
     override func setUp() {
         super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testSet() {
+        let key = Key<String>("test")
+        cache.set("Hellow World", for: key)
+        let r = cache.get(with: key)
+
+        XCTAssertEqual(r, "Hellow World")
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func testSetSwift() {
+        // struct
+        do {
+            let foo = Foo("foo")
+            let key = SwiftKey<Foo>("foo")
+
+            cache.set(foo, for: key)
+            let r = cache.get(with: key)
+            
+            XCTAssertEqual(r?.foo, foo.foo)
+        }
+        
+        // class
+        do {
+            let foo = Foo("foo")
+            let bar = Bar("bar", foo: foo)
+            let key = SwiftKey<Bar>("bar")
+            
+            cache.set(bar, for: key)
+            let r = cache.get(with: key)
+            
+            XCTAssertEqual(r?.bar, bar.bar)
+            XCTAssertEqual(r?.foo?.foo, foo.foo)
+        }
+    
+        // enum
+        do {
+            let quzA = Quzz.A
+            let quzB = Quzz.B("quz")
+            let key = SwiftKey<Quzz>("quz")
+            
+            cache.set(quzB, for: key)
+            let r = cache.get(with: key)
+            
+            XCTAssertNotEqual(r, quzA)
+            XCTAssertEqual(r, quzB)
         }
     }
     

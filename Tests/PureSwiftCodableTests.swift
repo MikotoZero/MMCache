@@ -13,48 +13,48 @@ import MMCache
 
 // MARK: - Struct
 struct Foo {
-    let bar: String
+    let foo: String
     
-    init(bar: String) {
-        self.bar = bar
+    init(_ foo: String) {
+        self.foo = foo
     }
 }
 
 extension Foo: Encodable {
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(bar, forKey: "bar")
+        aCoder.encode(foo, forKey: "foo")
     }
     
     init?(coder aDecoder: NSCoder) {
-        guard let bar = aDecoder.decodeObject(forKey: "bar") as? String else { return nil }
-        self.bar = bar
+        guard let foo = aDecoder.decodeObject(forKey: "foo") as? String else { return nil }
+        self.foo = foo
     }
 }
 
 extension Foo: CustomStringConvertible {
     var description: String {
-        return "Foo(\n  bar: \"\(bar)\"\n)"
+        return "Foo(\n  bar: \"\(foo)\"\n)"
     }
 }
 
 // MARK: - Class
-class Baz: Encodable {
-    let quz: String
+class Bar: Encodable {
+    let bar: String
     let foo: Foo?
     
-    init(quz: String, foo: Foo? = nil) {
-        self.quz = quz
+    init(_ bar: String, foo: Foo? = nil) {
+        self.bar = bar
         self.foo = foo
     }
 
     func encode(with aCoder: NSCoder) {
-        aCoder.encode(quz, forKey: "quz")
+        aCoder.encode(bar, forKey: "bar")
         aCoder.encode(foo, forKey: "foo")
     }
     
     required init?(coder aDecoder: NSCoder) {
-        guard let quz = aDecoder.decodeObject(forKey: "quz") as? String else { return nil }
-        self.quz = quz
+        guard let bar = aDecoder.decodeObject(forKey: "bar") as? String else { return nil }
+        self.bar = bar
         self.foo = aDecoder.decodeObject(forKey: "foo")
     }
 }
@@ -112,21 +112,21 @@ class PureSwiftCodableTests: XCTestCase {
     }
 
     func testStruct() {
-        let foo = Foo(bar: "bar")
+        let foo = Foo("foo")
         let data = foo.archive()
         let unarchive = Foo(unarchive: data)
         XCTAssertNotNil(unarchive)
-        XCTAssertEqual(unarchive?.bar, foo.bar)
+        XCTAssertEqual(unarchive?.foo, foo.foo)
     }
     
     func testSwiftClass() {
-        let baz = Baz(quz: "quz")
-        let data = baz.archive()
-        let unarchive = Baz(unarchive: data)
+        let bar = Bar("bar")
+        let data = bar.archive()
+        let unarchive = Bar(unarchive: data)
         XCTAssertNotNil(unarchive)
-        XCTAssertEqual(unarchive?.quz, baz.quz)
+        XCTAssertEqual(unarchive?.bar, bar.bar)
         
-        let errorBaz = Baz(unarchive: Foo(bar: "foo").archive())
+        let errorBaz = Bar(unarchive: Foo("foo").archive())
         XCTAssertNil(errorBaz)
     }
     
@@ -139,12 +139,12 @@ class PureSwiftCodableTests: XCTestCase {
     }
     
     func testNestType() {
-        let foo = Foo(bar: "bar")
-        let baz = Baz(quz: "quz", foo: foo)
-        let data = baz.archive()
-        let unarchive = Baz(unarchive: data)
+        let foo = Foo("foo")
+        let bar = Bar("bar", foo: foo)
+        let data = bar.archive()
+        let unarchive = Bar(unarchive: data)
         XCTAssertNotNil(unarchive)
-        XCTAssertEqual(unarchive?.quz, baz.quz)
-        XCTAssertEqual(unarchive?.foo?.bar, foo.bar)
+        XCTAssertEqual(unarchive?.bar, bar.bar)
+        XCTAssertEqual(unarchive?.foo?.foo, foo.foo)
     }
 }

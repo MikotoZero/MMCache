@@ -126,12 +126,12 @@ extension DiskCache {
         set(data: data, for: key, expriedInterval: interval)
     }
     
-    public func get<T>(with key: String) -> T? where T: NSObject, T: NSCoder {
+    public func get<T>(with key: String) -> T? {
         guard let data = get(dataWith: key) else { return nil }
         return NSKeyedUnarchiver.unarchiveObject(with: data) as? T
     }
     
-    public func get<T>(with key: String) -> T? where T: Encodable {
+    public func getSwift<T>(with key: String) -> T? where T: Encodable {
         guard let data = get(dataWith: key) else { return nil }
         return NSKeyedUnarchiver.unarchiveObject(with: data)
     }

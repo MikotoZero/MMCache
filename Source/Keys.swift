@@ -19,7 +19,7 @@ public enum Level {
     case document, cache, temp, none
 }
 
-public struct Key<T>: KeyType where T: NSCoding, T: NSObject {
+public struct Key<T>: KeyType {
     public typealias Result = T
     public let key: String
     public let level: Level

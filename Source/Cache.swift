@@ -66,12 +66,12 @@ extension Cache {
 
     fileprivate func getFromDisk<K>(with key: K) -> K.Result? where K: KeyType, K.Result: Encodable {
         guard let dc = diskCache(for: key) else { return nil }
-        return dc.get(with: key.key)
+        return dc.getSwift(with: key.key)
     }
     
-    fileprivate func getFromDisk<K>(with key: K) -> K.Result? where K: KeyType, K.Result: NSCoding, K.Result: NSObject {
+    fileprivate func getFromDisk<K>(with key: K) -> K.Result? where K: KeyType {
         guard let dc = diskCache(for: key) else { return nil }
-        return dc.get(with: key.key) as? K.Result
+        return dc.get(with: key.key)
     }
 
     fileprivate func removeFromDisk<K>(with key: K) where K: KeyType {
@@ -103,7 +103,7 @@ extension Cache {
         return nil
     }
     
-    public func get<K>(with key: K) -> K.Result? where K: KeyType, K.Result: NSCoding, K.Result: NSObject {
+    public func get<K>(with key: K) -> K.Result? where K: KeyType {
         if let memory = getFromMemory(with: key) {
             return memory
         } else if let disk = getFromDisk(with: key) {
