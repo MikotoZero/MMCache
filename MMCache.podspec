@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MMCache"
-  s.version      = "0.1"
+  s.version      = "0.1.1"
   s.summary      = "App cache manager for swift 3"
   s.description  = <<-DESC
                             This is MMCache. An app cache manager for swift 3
@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '8.0'
 
   s.source       = { :git => "https://github.com/MikotoZero/MMCache.git", :tag => s.version.to_s }
-  s.source_files  = "Source/**/*.{h,swift}"
+  s.source_files  = "Source/**/*.{swift}"
   s.resource = "Source/DataBase/*.xcdatamodeld"
   s.frameworks = 'CoreData'
 
