@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "MMCache"
-  s.version      = "0.1.1"
+  s.version      = "0.1.2"
   s.summary      = "App cache manager for swift 3"
   s.description  = <<-DESC
                             This is MMCache. An app cache manager for swift 3
