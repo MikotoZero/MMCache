@@ -6,20 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		170D32491EDEC09000BE9450 /* CommonCryptoModuleMap */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 170D324A1EDEC09000BE9450 /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */;
-			buildPhases = (
-				170D324D1EDEC09B00BE9450 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = CommonCryptoModuleMap;
-			productName = CommonCryptoModuleMap;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		170D328C1EE0030F00BE9450 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 170D32891EE0030F00BE9450 /* LICENSE */; };
 		170D32941EE024B900BE9450 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D32931EE024B900BE9450 /* MD5.swift */; };
@@ -219,11 +205,6 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = MikotoZero;
 				TargetAttributes = {
-					170D32491EDEC09000BE9450 = {
-						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = MG9EX24M7M;
-						ProvisioningStyle = Automatic;
-					};
 					17655D2F1ED428F4009CA624 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = MG9EX24M7M;
@@ -249,7 +230,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				170D32491EDEC09000BE9450 /* CommonCryptoModuleMap */,
 				17655D2F1ED428F4009CA624 /* MMCache */,
 				17655D381ED428F4009CA624 /* MMCacheTests */,
 			);
@@ -273,22 +253,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		170D324D1EDEC09B00BE9450 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/bash;
-			shellScript = "mkdir -p \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap\"\ncat <<EOF > \"${BUILT_PRODUCTS_DIR}/CommonCryptoModuleMap/module.modulemap\"\nmodule CommonCrypto [system] {\n    header \"${SDKROOT}/usr/include/CommonCrypto/CommonCrypto.h\"\n    export *\n}\nEOF";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		17655D2B1ED428F4009CA624 /* Sources */ = {
@@ -329,22 +293,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		170D324B1EDEC09000BE9450 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = MG9EX24M7M;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		170D324C1EDEC09000BE9450 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_TEAM = MG9EX24M7M;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		17655D421ED428F4009CA624 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -538,15 +486,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		170D324A1EDEC09000BE9450 /* Build configuration list for PBXAggregateTarget "CommonCryptoModuleMap" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				170D324B1EDEC09000BE9450 /* Debug */,
-				170D324C1EDEC09000BE9450 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		17655D2A1ED428F4009CA624 /* Build configuration list for PBXProject "MMCache" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
