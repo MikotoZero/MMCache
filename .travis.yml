@@ -1,10 +1,11 @@
 language: objective-c
 osx_image: xcode8.3
-xcode_sdk: iphonesimulator10.3
 
 script:
-- travis_retry xcodebuild -workspace MMCache.xcworkspace -scheme "MMCache" -destination
-  "platform=iOS Simulator,name=iPhone 7" build-for-testing test | xcpretty
+- set -o pipefail
+- travis_retry xcodebuild -workspace MMCache.xcworkspace -scheme "MMCache" -destination "platform=iOS Simulator,name=iPhone 7" build-for-testing test | xcpretty
+- travis_retry xcodebuild -workspace MMCache.xcworkspace -scheme "MMCache macOS" build-for-testing test | xcpretty
+- travis_retry xcodebuild -workspace MMCache.xcworkspace -scheme "MMCache tvOS" -destination "platform=tvOS Simulator,name=Apple TV 1080p" build-for-testing test | xcpretty
 
 env:
   global: 
