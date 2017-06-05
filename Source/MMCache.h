@@ -6,7 +6,7 @@
 //  Copyright © 2017年 M_M. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+@import Foundation;
 
 //! Project version number for MMCache.
 FOUNDATION_EXPORT double MMCacheVersionNumber;

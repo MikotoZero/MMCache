@@ -23,6 +23,47 @@
 		17EA170F1EDE9F1C003B74BF /* PureSwiftCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C41EDE98AE003B74BF /* PureSwiftCodableTests.swift */; };
 		17EA17101EDE9F20003B74BF /* MemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C21EDE98AE003B74BF /* MemoryCacheTests.swift */; };
 		17EA17141EDEA232003B74BF /* MMCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17655D301ED428F4009CA624 /* MMCache.framework */; };
+		17FE86871EE56519006782E9 /* MMCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17FE867E1EE56519006782E9 /* MMCache.framework */; };
+		17FE86951EE5697E006782E9 /* MMCache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16AE1EDE97C2003B74BF /* MMCache.xcdatamodeld */; };
+		17FE86961EE5697E006782E9 /* CacheObject+Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B01EDE97C2003B74BF /* CacheObject+Operation.swift */; };
+		17FE86971EE5697E006782E9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D32931EE024B900BE9450 /* MD5.swift */; };
+		17FE86981EE5697E006782E9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16AC1EDE97C2003B74BF /* Cache.swift */; };
+		17FE86991EE5697E006782E9 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B61EDE97C2003B74BF /* MemoryCache.swift */; };
+		17FE869A1EE5697E006782E9 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B11EDE97C2003B74BF /* DiskCache.swift */; };
+		17FE869B1EE5697E006782E9 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B21EDE97C2003B74BF /* Encodable.swift */; };
+		17FE869C1EE5697E006782E9 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B51EDE97C2003B74BF /* Keys.swift */; };
+		17FE86A01EE569D7006782E9 /* MMCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 17655D521ED42E9D009CA624 /* MMCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17FE86A11EE569F4006782E9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 170D32891EE0030F00BE9450 /* LICENSE */; };
+		17FE86A21EE56A07006782E9 /* MMCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17655D4D1ED42E59009CA624 /* MMCacheTests.swift */; };
+		17FE86A31EE56A07006782E9 /* DBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C01EDE98AE003B74BF /* DBTests.swift */; };
+		17FE86A41EE56A07006782E9 /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C11EDE98AE003B74BF /* DiskCacheTests.swift */; };
+		17FE86A51EE56A07006782E9 /* MemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C21EDE98AE003B74BF /* MemoryCacheTests.swift */; };
+		17FE86A61EE56A07006782E9 /* PureSwiftCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C41EDE98AE003B74BF /* PureSwiftCodableTests.swift */; };
+		17FE86B51EE56CB0006782E9 /* MMCache.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17FE86AC1EE56CAF006782E9 /* MMCache.framework */; };
+		17FE86C71EE56DAA006782E9 /* MMCache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16AE1EDE97C2003B74BF /* MMCache.xcdatamodeld */; };
+		17FE86C81EE56DAA006782E9 /* CacheObject+Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B01EDE97C2003B74BF /* CacheObject+Operation.swift */; };
+		17FE86C91EE56DAA006782E9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D32931EE024B900BE9450 /* MD5.swift */; };
+		17FE86CA1EE56DAA006782E9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16AC1EDE97C2003B74BF /* Cache.swift */; };
+		17FE86CB1EE56DAA006782E9 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B61EDE97C2003B74BF /* MemoryCache.swift */; };
+		17FE86CC1EE56DAA006782E9 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B11EDE97C2003B74BF /* DiskCache.swift */; };
+		17FE86CD1EE56DAA006782E9 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B21EDE97C2003B74BF /* Encodable.swift */; };
+		17FE86CE1EE56DAA006782E9 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B51EDE97C2003B74BF /* Keys.swift */; };
+		17FE86CF1EE56DB1006782E9 /* MMCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 17655D521ED42E9D009CA624 /* MMCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		17FE86D01EE56F12006782E9 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 170D32891EE0030F00BE9450 /* LICENSE */; };
+		17FE86D11EE56F3C006782E9 /* MMCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17655D4D1ED42E59009CA624 /* MMCacheTests.swift */; };
+		17FE86D21EE56F3C006782E9 /* DBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C01EDE98AE003B74BF /* DBTests.swift */; };
+		17FE86D31EE56F3C006782E9 /* DiskCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C11EDE98AE003B74BF /* DiskCacheTests.swift */; };
+		17FE86D41EE56F3C006782E9 /* MemoryCacheTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C21EDE98AE003B74BF /* MemoryCacheTests.swift */; };
+		17FE86D51EE56F3C006782E9 /* PureSwiftCodableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16C41EDE98AE003B74BF /* PureSwiftCodableTests.swift */; };
+		17FE86E41EE5708A006782E9 /* MMCache.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16AE1EDE97C2003B74BF /* MMCache.xcdatamodeld */; };
+		17FE86E51EE5708A006782E9 /* CacheObject+Operation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B01EDE97C2003B74BF /* CacheObject+Operation.swift */; };
+		17FE86E61EE5708A006782E9 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D32931EE024B900BE9450 /* MD5.swift */; };
+		17FE86E71EE5708A006782E9 /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16AC1EDE97C2003B74BF /* Cache.swift */; };
+		17FE86E81EE5708A006782E9 /* MemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B61EDE97C2003B74BF /* MemoryCache.swift */; };
+		17FE86E91EE5708A006782E9 /* DiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B11EDE97C2003B74BF /* DiskCache.swift */; };
+		17FE86EA1EE5708A006782E9 /* Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B21EDE97C2003B74BF /* Encodable.swift */; };
+		17FE86EB1EE5708A006782E9 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17EA16B51EDE97C2003B74BF /* Keys.swift */; };
+		17FE86EC1EE57095006782E9 /* MMCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 17655D521ED42E9D009CA624 /* MMCache.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +73,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 17655D2F1ED428F4009CA624;
 			remoteInfo = MMCache;
+		};
+		17FE86881EE56519006782E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17655D271ED428F4009CA624 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17FE867D1EE56519006782E9;
+			remoteInfo = "MMCache macOS";
+		};
+		17FE86B61EE56CB0006782E9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 17655D271ED428F4009CA624 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17FE86AB1EE56CAF006782E9;
+			remoteInfo = "MMCache tvOS";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -44,7 +99,7 @@
 		17655D391ED428F4009CA624 /* MMCacheTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MMCacheTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17655D4C1ED42E59009CA624 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17655D4D1ED42E59009CA624 /* MMCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMCacheTests.swift; sourceTree = "<group>"; };
-		17655D511ED42E9D009CA624 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17655D511ED42E9D009CA624 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Source/Info.plist; sourceTree = "<group>"; };
 		17655D521ED42E9D009CA624 /* MMCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMCache.h; sourceTree = "<group>"; };
 		17EA16AC1EDE97C2003B74BF /* Cache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		17EA16AF1EDE97C2003B74BF /* MMCache.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MMCache.xcdatamodel; sourceTree = "<group>"; };
@@ -57,6 +112,16 @@
 		17EA16C11EDE98AE003B74BF /* DiskCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskCacheTests.swift; sourceTree = "<group>"; };
 		17EA16C21EDE98AE003B74BF /* MemoryCacheTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCacheTests.swift; sourceTree = "<group>"; };
 		17EA16C41EDE98AE003B74BF /* PureSwiftCodableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PureSwiftCodableTests.swift; sourceTree = "<group>"; };
+		17FE867E1EE56519006782E9 /* MMCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MMCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17FE86861EE56519006782E9 /* MMCache macOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MMCache macOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17FE869E1EE569C4006782E9 /* Info macOS.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Info macOS.plist"; path = "Source/Info macOS.plist"; sourceTree = "<group>"; };
+		17FE86AC1EE56CAF006782E9 /* MMCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MMCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17FE86B41EE56CB0006782E9 /* MMCache tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "MMCache tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		17FE86C41EE56D21006782E9 /* Info tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info tvOS.plist"; path = "Source/Info tvOS.plist"; sourceTree = "<group>"; };
+		17FE86C51EE56D46006782E9 /* Info tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info tvOS.plist"; sourceTree = "<group>"; };
+		17FE86C61EE56D4D006782E9 /* Info macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info macOS.plist"; sourceTree = "<group>"; };
+		17FE86DB1EE56FA2006782E9 /* MMCache.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MMCache.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		17FE86E31EE56FEC006782E9 /* Info watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info watchOS.plist"; path = "Source/Info watchOS.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +137,43 @@
 			buildActionMask = 2147483647;
 			files = (
 				17EA17141EDEA232003B74BF /* MMCache.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE867A1EE56519006782E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86831EE56519006782E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86871EE56519006782E9 /* MMCache.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86A81EE56CAF006782E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86B11EE56CB0006782E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86B51EE56CB0006782E9 /* MMCache.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86D71EE56FA2006782E9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +205,11 @@
 			children = (
 				17655D301ED428F4009CA624 /* MMCache.framework */,
 				17655D391ED428F4009CA624 /* MMCacheTests.xctest */,
+				17FE867E1EE56519006782E9 /* MMCache.framework */,
+				17FE86861EE56519006782E9 /* MMCache macOSTests.xctest */,
+				17FE86AC1EE56CAF006782E9 /* MMCache.framework */,
+				17FE86B41EE56CB0006782E9 /* MMCache tvOSTests.xctest */,
+				17FE86DB1EE56FA2006782E9 /* MMCache.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,7 +217,7 @@
 		17655D4B1ED42E59009CA624 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				17655D4C1ED42E59009CA624 /* Info.plist */,
+				17FE86C31EE56CC5006782E9 /* Supporting Files */,
 				17655D4D1ED42E59009CA624 /* MMCacheTests.swift */,
 				17EA16C01EDE98AE003B74BF /* DBTests.swift */,
 				17EA16C11EDE98AE003B74BF /* DiskCacheTests.swift */,
@@ -123,7 +230,7 @@
 		17655D501ED42E9D009CA624 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				17655D511ED42E9D009CA624 /* Info.plist */,
+				17FE869D1EE56995006782E9 /* Supportiong Files */,
 				17655D521ED42E9D009CA624 /* MMCache.h */,
 				17EA16AD1EDE97C2003B74BF /* DataBase */,
 				170D32921EE0242E00BE9450 /* MD5 */,
@@ -145,6 +252,28 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
+		17FE869D1EE56995006782E9 /* Supportiong Files */ = {
+			isa = PBXGroup;
+			children = (
+				17655D511ED42E9D009CA624 /* Info.plist */,
+				17FE869E1EE569C4006782E9 /* Info macOS.plist */,
+				17FE86C41EE56D21006782E9 /* Info tvOS.plist */,
+				17FE86E31EE56FEC006782E9 /* Info watchOS.plist */,
+			);
+			name = "Supportiong Files";
+			path = ..;
+			sourceTree = "<group>";
+		};
+		17FE86C31EE56CC5006782E9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				17655D4C1ED42E59009CA624 /* Info.plist */,
+				17FE86C61EE56D4D006782E9 /* Info macOS.plist */,
+				17FE86C51EE56D46006782E9 /* Info tvOS.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -153,6 +282,30 @@
 			buildActionMask = 2147483647;
 			files = (
 				17655D541ED42E9D009CA624 /* MMCache.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE867B1EE56519006782E9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86A01EE569D7006782E9 /* MMCache.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86A91EE56CAF006782E9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86CF1EE56DB1006782E9 /* MMCache.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86D81EE56FA2006782E9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86EC1EE57095006782E9 /* MMCache.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +348,96 @@
 			productReference = 17655D391ED428F4009CA624 /* MMCacheTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		17FE867D1EE56519006782E9 /* MMCache macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17FE86931EE5651A006782E9 /* Build configuration list for PBXNativeTarget "MMCache macOS" */;
+			buildPhases = (
+				17FE86791EE56519006782E9 /* Sources */,
+				17FE867A1EE56519006782E9 /* Frameworks */,
+				17FE867B1EE56519006782E9 /* Headers */,
+				17FE867C1EE56519006782E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MMCache macOS";
+			productName = "MMCache macOS";
+			productReference = 17FE867E1EE56519006782E9 /* MMCache.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		17FE86851EE56519006782E9 /* MMCache macOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17FE86941EE5651A006782E9 /* Build configuration list for PBXNativeTarget "MMCache macOSTests" */;
+			buildPhases = (
+				17FE86821EE56519006782E9 /* Sources */,
+				17FE86831EE56519006782E9 /* Frameworks */,
+				17FE86841EE56519006782E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17FE86891EE56519006782E9 /* PBXTargetDependency */,
+			);
+			name = "MMCache macOSTests";
+			productName = "MMCache macOSTests";
+			productReference = 17FE86861EE56519006782E9 /* MMCache macOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		17FE86AB1EE56CAF006782E9 /* MMCache tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17FE86BD1EE56CB0006782E9 /* Build configuration list for PBXNativeTarget "MMCache tvOS" */;
+			buildPhases = (
+				17FE86A71EE56CAF006782E9 /* Sources */,
+				17FE86A81EE56CAF006782E9 /* Frameworks */,
+				17FE86A91EE56CAF006782E9 /* Headers */,
+				17FE86AA1EE56CAF006782E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MMCache tvOS";
+			productName = "MMCache tvOS";
+			productReference = 17FE86AC1EE56CAF006782E9 /* MMCache.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		17FE86B31EE56CB0006782E9 /* MMCache tvOSTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17FE86C01EE56CB0006782E9 /* Build configuration list for PBXNativeTarget "MMCache tvOSTests" */;
+			buildPhases = (
+				17FE86B01EE56CB0006782E9 /* Sources */,
+				17FE86B11EE56CB0006782E9 /* Frameworks */,
+				17FE86B21EE56CB0006782E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				17FE86B71EE56CB0006782E9 /* PBXTargetDependency */,
+			);
+			name = "MMCache tvOSTests";
+			productName = "MMCache tvOSTests";
+			productReference = 17FE86B41EE56CB0006782E9 /* MMCache tvOSTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		17FE86DA1EE56FA2006782E9 /* MMCache watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17FE86E01EE56FA2006782E9 /* Build configuration list for PBXNativeTarget "MMCache watchOS" */;
+			buildPhases = (
+				17FE86D61EE56FA2006782E9 /* Sources */,
+				17FE86D71EE56FA2006782E9 /* Frameworks */,
+				17FE86D81EE56FA2006782E9 /* Headers */,
+				17FE86D91EE56FA2006782E9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MMCache watchOS";
+			productName = "MMCache watchOS";
+			productReference = 17FE86DB1EE56FA2006782E9 /* MMCache.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -216,6 +459,31 @@
 						DevelopmentTeam = MG9EX24M7M;
 						ProvisioningStyle = Automatic;
 					};
+					17FE867D1EE56519006782E9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = MG9EX24M7M;
+						ProvisioningStyle = Automatic;
+					};
+					17FE86851EE56519006782E9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = MG9EX24M7M;
+						ProvisioningStyle = Automatic;
+					};
+					17FE86AB1EE56CAF006782E9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = MG9EX24M7M;
+						ProvisioningStyle = Automatic;
+					};
+					17FE86B31EE56CB0006782E9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = MG9EX24M7M;
+						ProvisioningStyle = Automatic;
+					};
+					17FE86DA1EE56FA2006782E9 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = MG9EX24M7M;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 17655D2A1ED428F4009CA624 /* Build configuration list for PBXProject "MMCache" */;
@@ -232,6 +500,11 @@
 			targets = (
 				17655D2F1ED428F4009CA624 /* MMCache */,
 				17655D381ED428F4009CA624 /* MMCacheTests */,
+				17FE867D1EE56519006782E9 /* MMCache macOS */,
+				17FE86851EE56519006782E9 /* MMCache macOSTests */,
+				17FE86AB1EE56CAF006782E9 /* MMCache tvOS */,
+				17FE86B31EE56CB0006782E9 /* MMCache tvOSTests */,
+				17FE86DA1EE56FA2006782E9 /* MMCache watchOS */,
 			);
 		};
 /* End PBXProject section */
@@ -246,6 +519,43 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		17655D371ED428F4009CA624 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE867C1EE56519006782E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86A11EE569F4006782E9 /* LICENSE in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86841EE56519006782E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86AA1EE56CAF006782E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86D01EE56F12006782E9 /* LICENSE in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86B21EE56CB0006782E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86D91EE56FA2006782E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -282,6 +592,75 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17FE86791EE56519006782E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86951EE5697E006782E9 /* MMCache.xcdatamodeld in Sources */,
+				17FE86961EE5697E006782E9 /* CacheObject+Operation.swift in Sources */,
+				17FE86971EE5697E006782E9 /* MD5.swift in Sources */,
+				17FE86981EE5697E006782E9 /* Cache.swift in Sources */,
+				17FE86991EE5697E006782E9 /* MemoryCache.swift in Sources */,
+				17FE869A1EE5697E006782E9 /* DiskCache.swift in Sources */,
+				17FE869B1EE5697E006782E9 /* Encodable.swift in Sources */,
+				17FE869C1EE5697E006782E9 /* Keys.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86821EE56519006782E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86A21EE56A07006782E9 /* MMCacheTests.swift in Sources */,
+				17FE86A31EE56A07006782E9 /* DBTests.swift in Sources */,
+				17FE86A41EE56A07006782E9 /* DiskCacheTests.swift in Sources */,
+				17FE86A51EE56A07006782E9 /* MemoryCacheTests.swift in Sources */,
+				17FE86A61EE56A07006782E9 /* PureSwiftCodableTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86A71EE56CAF006782E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86C71EE56DAA006782E9 /* MMCache.xcdatamodeld in Sources */,
+				17FE86C81EE56DAA006782E9 /* CacheObject+Operation.swift in Sources */,
+				17FE86C91EE56DAA006782E9 /* MD5.swift in Sources */,
+				17FE86CA1EE56DAA006782E9 /* Cache.swift in Sources */,
+				17FE86CB1EE56DAA006782E9 /* MemoryCache.swift in Sources */,
+				17FE86CC1EE56DAA006782E9 /* DiskCache.swift in Sources */,
+				17FE86CD1EE56DAA006782E9 /* Encodable.swift in Sources */,
+				17FE86CE1EE56DAA006782E9 /* Keys.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86B01EE56CB0006782E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86D11EE56F3C006782E9 /* MMCacheTests.swift in Sources */,
+				17FE86D21EE56F3C006782E9 /* DBTests.swift in Sources */,
+				17FE86D31EE56F3C006782E9 /* DiskCacheTests.swift in Sources */,
+				17FE86D41EE56F3C006782E9 /* MemoryCacheTests.swift in Sources */,
+				17FE86D51EE56F3C006782E9 /* PureSwiftCodableTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		17FE86D61EE56FA2006782E9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17FE86E41EE5708A006782E9 /* MMCache.xcdatamodeld in Sources */,
+				17FE86E51EE5708A006782E9 /* CacheObject+Operation.swift in Sources */,
+				17FE86E61EE5708A006782E9 /* MD5.swift in Sources */,
+				17FE86E71EE5708A006782E9 /* Cache.swift in Sources */,
+				17FE86E81EE5708A006782E9 /* MemoryCache.swift in Sources */,
+				17FE86E91EE5708A006782E9 /* DiskCache.swift in Sources */,
+				17FE86EA1EE5708A006782E9 /* Encodable.swift in Sources */,
+				17FE86EB1EE5708A006782E9 /* Keys.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -289,6 +668,16 @@
 			isa = PBXTargetDependency;
 			target = 17655D2F1ED428F4009CA624 /* MMCache */;
 			targetProxy = 17655D3B1ED428F4009CA624 /* PBXContainerItemProxy */;
+		};
+		17FE86891EE56519006782E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17FE867D1EE56519006782E9 /* MMCache macOS */;
+			targetProxy = 17FE86881EE56519006782E9 /* PBXContainerItemProxy */;
+		};
+		17FE86B71EE56CB0006782E9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17FE86AB1EE56CAF006782E9 /* MMCache tvOS */;
+			targetProxy = 17FE86B61EE56CB0006782E9 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -397,6 +786,7 @@
 		17655D451ED428F4009CA624 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -412,8 +802,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.MikotoZero.MMCache;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -426,6 +816,7 @@
 		17655D461ED428F4009CA624 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -441,8 +832,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
-				PRODUCT_BUNDLE_IDENTIFIER = com.MikotoZero.MMCache;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_INCLUDE_PATHS = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
@@ -483,6 +874,215 @@
 			};
 			name = Release;
 		};
+		17FE868F1EE5651A006782E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Source/Info macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PLIST_FILE_OUTPUT_FORMAT = binary;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		17FE86901EE5651A006782E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Source/Info macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				PLIST_FILE_OUTPUT_FORMAT = binary;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		17FE86911EE5651A006782E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				INFOPLIST_FILE = "Tests/Info macOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.MMCache-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		17FE86921EE5651A006782E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				INFOPLIST_FILE = "Tests/Info macOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.MMCache-macOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		17FE86BE1EE56CB0006782E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Source/Info tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		17FE86BF1EE56CB0006782E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Source/Info tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
+		17FE86C11EE56CB0006782E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				INFOPLIST_FILE = "Tests/Info tvOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.MMCache-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Debug;
+		};
+		17FE86C21EE56CB0006782E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				INFOPLIST_FILE = "Tests/Info tvOS.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.MMCache-tvOSTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_VERSION = 3.0;
+				TVOS_DEPLOYMENT_TARGET = 10.2;
+			};
+			name = Release;
+		};
+		17FE86E11EE56FA2006782E9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Source/Info watchOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		17FE86E21EE56FA2006782E9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Source/Info watchOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.MikotoZero.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(PROJECT_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -512,6 +1112,46 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		17FE86931EE5651A006782E9 /* Build configuration list for PBXNativeTarget "MMCache macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17FE868F1EE5651A006782E9 /* Debug */,
+				17FE86901EE5651A006782E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		17FE86941EE5651A006782E9 /* Build configuration list for PBXNativeTarget "MMCache macOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17FE86911EE5651A006782E9 /* Debug */,
+				17FE86921EE5651A006782E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		17FE86BD1EE56CB0006782E9 /* Build configuration list for PBXNativeTarget "MMCache tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17FE86BE1EE56CB0006782E9 /* Debug */,
+				17FE86BF1EE56CB0006782E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		17FE86C01EE56CB0006782E9 /* Build configuration list for PBXNativeTarget "MMCache tvOSTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17FE86C11EE56CB0006782E9 /* Debug */,
+				17FE86C21EE56CB0006782E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		17FE86E01EE56FA2006782E9 /* Build configuration list for PBXNativeTarget "MMCache watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17FE86E11EE56FA2006782E9 /* Debug */,
+				17FE86E21EE56FA2006782E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 
