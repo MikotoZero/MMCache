@@ -1,6 +1,7 @@
-# Xcode
+#OS
+.DS_Store
 
-#
+# Xcode
 build/
 *.pbxuser
 !default.pbxuser
@@ -18,7 +19,8 @@ DerivedData
 *.ipa
 *.xcuserstate
 
-
 # AppCode
-
 *.idea
+
+#Carthage
+Carthage/Build
