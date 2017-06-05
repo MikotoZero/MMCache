@@ -3,4 +3,26 @@ osx_image: xcode8.3
 xcode_sdk: iphonesimulator10.3
 
 script:
-- travis_retry xcodebuild -workspace MMCache.xcworkspace -scheme "MMCache" -destination "platform=iOS Simulator,name=iPhone 7" build-for-testing test | xcpretty
+- travis_retry xcodebuild -workspace MMCache.xcworkspace -scheme "MMCache" -destination
+  "platform=iOS Simulator,name=iPhone 7" build-for-testing test | xcpretty
+
+env:
+  global: 
+  - FRAMEWORK_NAME=MMCache
+before_install:
+- brew update
+- brew outdated carthage || brew upgrade carthage
+
+before_deploy:
+- carthage build --no-skip-current
+- carthage archive $FRAMEWORK_NAME
+
+deploy:
+  provider: releases
+  api_key:
+    secure: MM0tjemZSRm5Ph/T7fO/CuA3RGEehrTerzK3kfSrze/9MzVLufHR6FkEVcesbivpuIjJTS6eSYV1vsjnCcMWZN+mcKRBu9Y2c0EXcBLD0HufSChzYgOQjBtcz+HDpyMLYIRNNVEcGK8xUV/Yptf0/5BaPwJBSWUhcZqa3nNMU2C5hVlMaqq27bCv2kZSiTaWR2DvnCT5jQtid1M4fkgErFZmakxIniZRsIsWhYi6AW0mtEh+CRWGI8DOuPVHT0QQeFV+247A38nHWPXSg6fdHUqqjqF/TfGr++LE3p2b5s0vAhGArexYl8E3IWGwyrb93/4hgXbsuPTDGn9kBl7GK5o9MT57S23ckV3GwDtMkC8oH1fvtloH84QXVhzuFRB0rnmUuagl+GmsqCVRuZtYcf4dy3E46varndCe7UNWATEA2G0plAlcPMi+IRZuF98ihSbz0+Lg217s/hatU6t0SE8KT9hPR2C4oECN9u3TIwa19h70vpQISwdPKGCfuENVBYjJNzzVYd7NXKRxlvRuJ0XgGyBLrqNyGGdU+B5Z6ovcBhsh4t72YX2JN/2OoEiSueIL7ipo+JKH8QZiv86jXQzz/BHAdT/osllrKVCfhCeA0r7m7X5YNr8l0xDVr1IGJNl4dlCzEs87VfMQKbjjK2ow8eGc2+dGrLVWqDkmf6E=
+  file: "$FRAMEWORK_NAME.framework.zip"
+  skip_cleanup: true
+  on:
+    repo: MikotoZero/MMCache
+    tags: true
