@@ -19,6 +19,9 @@ DerivedData
 *.ipa
 *.xcuserstate
 
+# xctool
+.build
+
 # AppCode
 *.idea
 
