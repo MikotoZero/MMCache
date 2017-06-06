@@ -20,6 +20,20 @@
                ReferencedContainer = "container:MMCache.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "NO"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "17FE86851EE56519006782E9"
+               BuildableName = "MMCache macOSTests.xctest"
+               BlueprintName = "MMCache macOSTests"
+               ReferencedContainer = "container:MMCache.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -28,7 +42,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "17FE86851EE56519006782E9"
+               BuildableName = "MMCache macOSTests.xctest"
+               BlueprintName = "MMCache macOSTests"
+               ReferencedContainer = "container:MMCache.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "17FE867D1EE56519006782E9"
+            BuildableName = "MMCache.framework"
+            BlueprintName = "MMCache macOS"
+            ReferencedContainer = "container:MMCache.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
