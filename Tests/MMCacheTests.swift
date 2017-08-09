@@ -14,17 +14,17 @@ private func `do`(_ block: () -> Void) {
 }
 
 class MMCacheTests: XCTestCase {
-    
+
     let cache = Cache(withIdentifer: "MMCacheTest")
 
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
-    
+
     func testSet() {
         let key = Key<String>("test")
         cache.set("Hellow World", for: key)
@@ -32,7 +32,7 @@ class MMCacheTests: XCTestCase {
 
         XCTAssertEqual(r, "Hellow World")
     }
-    
+
     func testSetSwift() {
         // struct
         do {
@@ -41,35 +41,35 @@ class MMCacheTests: XCTestCase {
 
             cache.set(foo, for: key)
             let r = cache.get(with: key)
-            
+
             XCTAssertEqual(r?.foo, foo.foo)
         }
-        
+
         // class
         do {
             let foo = Foo("foo")
             let bar = Bar("bar", foo: foo)
             let key = SwiftKey<Bar>("bar")
-            
+
             cache.set(bar, for: key)
             let r = cache.get(with: key)
-            
+
             XCTAssertEqual(r?.bar, bar.bar)
             XCTAssertEqual(r?.foo?.foo, foo.foo)
         }
-    
+
         // enum
         do {
             let quzA = Quzz.A
             let quzB = Quzz.B("quz")
             let key = SwiftKey<Quzz>("quz")
-            
+
             cache.set(quzB, for: key)
             let r = cache.get(with: key)
-            
+
             XCTAssertNotEqual(r, quzA)
             XCTAssertEqual(r, quzB)
         }
     }
-    
+
 }

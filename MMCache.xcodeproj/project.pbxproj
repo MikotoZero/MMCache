@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		179E69691EEE82720052DB26 /* swiftlint */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 179E696A1EEE82720052DB26 /* Build configuration list for PBXAggregateTarget "swiftlint" */;
+			buildPhases = (
+				179E696D1EEE82790052DB26 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = swiftlint;
+			productName = swiftlint;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		170D328C1EE0030F00BE9450 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 170D32891EE0030F00BE9450 /* LICENSE */; };
 		170D32941EE024B900BE9450 /* MD5.swift in Sources */ = {isa = PBXBuildFile; fileRef = 170D32931EE024B900BE9450 /* MD5.swift */; };
@@ -459,6 +473,11 @@
 						DevelopmentTeam = MG9EX24M7M;
 						ProvisioningStyle = Automatic;
 					};
+					179E69691EEE82720052DB26 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = MG9EX24M7M;
+						ProvisioningStyle = Automatic;
+					};
 					17FE867D1EE56519006782E9 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = MG9EX24M7M;
@@ -505,6 +524,7 @@
 				17FE86AB1EE56CAF006782E9 /* MMCache tvOS */,
 				17FE86B31EE56CB0006782E9 /* MMCache tvOSTests */,
 				17FE86DA1EE56FA2006782E9 /* MMCache watchOS */,
+				179E69691EEE82720052DB26 /* swiftlint */,
 			);
 		};
 /* End PBXProject section */
@@ -563,6 +583,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		179E696D1EEE82790052DB26 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		17655D2B1ED428F4009CA624 /* Sources */ = {
@@ -874,6 +910,22 @@
 			};
 			name = Release;
 		};
+		179E696B1EEE82720052DB26 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		179E696C1EEE82720052DB26 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = MG9EX24M7M;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		17FE868F1EE5651A006782E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1113,6 +1165,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		179E696A1EEE82720052DB26 /* Build configuration list for PBXAggregateTarget "swiftlint" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				179E696B1EEE82720052DB26 /* Debug */,
+				179E696C1EEE82720052DB26 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		17FE86931EE5651A006782E9 /* Build configuration list for PBXNativeTarget "MMCache macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1120,6 +1180,7 @@
 				17FE86901EE5651A006782E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17FE86941EE5651A006782E9 /* Build configuration list for PBXNativeTarget "MMCache macOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1128,6 +1189,7 @@
 				17FE86921EE5651A006782E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17FE86BD1EE56CB0006782E9 /* Build configuration list for PBXNativeTarget "MMCache tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1136,6 +1198,7 @@
 				17FE86BF1EE56CB0006782E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17FE86C01EE56CB0006782E9 /* Build configuration list for PBXNativeTarget "MMCache tvOSTests" */ = {
 			isa = XCConfigurationList;
@@ -1144,6 +1207,7 @@
 				17FE86C21EE56CB0006782E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17FE86E01EE56FA2006782E9 /* Build configuration list for PBXNativeTarget "MMCache watchOS" */ = {
 			isa = XCConfigurationList;
@@ -1152,6 +1216,7 @@
 				17FE86E21EE56FA2006782E9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

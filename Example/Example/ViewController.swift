@@ -15,14 +15,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         CacheObject.clean(identifer: id)
-        
+
         let cache = CacheObject.insert(with: "foo", identifer: id, path: "/foo", dataSize: 1024, expriedInterval: 100)
-        
+
         let result = CacheObject.get(with: "foo", identifer: id)
 
-        
         print(cache.path as Any)
         print(result?.path as Any)
     }
@@ -32,6 +31,4 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
 }
-

@@ -1,0 +1,33 @@
+disabled_rules:
+  - force_cast
+  - force_try
+  
+  - type_name
+  - identifier_name
+
+  - line_length
+  - type_body_length
+  - file_length
+  - function_body_length
+
+  - cyclomatic_complexity
+
+opt_in_rules:
+  - empty_count
+  - attributes
+
+included:
+ - Source
+ - Tests
+ - Example
+
+excluded:
+  - Carthage
+  - Pods
+
+large_tuple:
+  warning: 3
+  error: 5
+
+# 指定报告类型 (xcode, json, csv, checkstyle, junit, html, emoji)
+reporter: "xcode"

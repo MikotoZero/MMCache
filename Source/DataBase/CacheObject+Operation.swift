@@ -11,14 +11,14 @@ import Foundation
 import CoreData
 
 private class CacheDBContext {
-    
+
     static var context: NSManagedObjectContext = {
         let context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.mergePolicy = NSMergePolicy(merge: .mergeByPropertyStoreTrumpMergePolicyType)
         context.persistentStoreCoordinator = CacheDBContext.persistentStoreCoordinator
         return context
     }()
-    
+
     static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
         guard
             let modelURL = Bundle(for: MMCache.CacheObject).url(forResource: "MMCache", withExtension: "momd"),
@@ -30,7 +30,7 @@ private class CacheDBContext {
         addPersistentStore(coordinator)
         return coordinator
     }()
-    
+
     static var entity: NSEntityDescription {
         guard let entityDesc = NSEntityDescription.entity(forEntityName: "CacheObject", in: CacheDBContext.context) else {
             fatalError("NSEntityDescription init fail")
@@ -40,7 +40,7 @@ private class CacheDBContext {
 }
 
 private extension CacheDBContext {
-    
+
     static func addPersistentStore(_ coordinator: NSPersistentStoreCoordinator) {
         do {
             let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last?.appendingPathComponent("store.sqlite")
@@ -56,7 +56,7 @@ private extension CacheDBContext {
             fatalError("MMCache.DiskCache.CoreData Error: NSPersistentStoreCoordinator addPersistentStore fail. Error: \(error)")
         }
     }
-    
+
     static func cleanPersistentStore() {
         guard let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last?.appendingPathComponent("store.sqlite") else {
             fatalError("MMCache.DiskCache.CoreData Error: NSPersistentStoreCoordinator get persistentStore path fail.")
@@ -81,8 +81,9 @@ private extension CacheDBContext {
 }
 
 internal extension CacheObject {
-    
-    @discardableResult class func insert(with key: String, identifer: String, path: String, dataSize size: Int64, expriedInterval interval: TimeInterval) -> CacheObject {
+
+    @discardableResult
+    class func insert(with key: String, identifer: String, path: String, dataSize size: Int64, expriedInterval interval: TimeInterval) -> CacheObject {
         objc_sync_enter(CacheDBContext.context)
         let objc = CacheObject(entity: CacheDBContext.entity, insertInto: CacheDBContext.context)
         objc.cache_identifer = identifer
@@ -97,22 +98,25 @@ internal extension CacheObject {
         objc_sync_exit(CacheDBContext.context)
         return objc
     }
-    
-    @nonobjc class func get(with key: String, identifer: String) -> CacheObject? {
+
+    @nonobjc
+    class func get(with key: String, identifer: String) -> CacheObject? {
         objc_sync_enter(CacheDBContext.context)
         let objc = get(with: NSPredicate(format: "key = %@ AND cache_identifer = %@", key, identifer)).first
         objc_sync_exit(CacheDBContext.context)
         return objc
     }
-    
-    @nonobjc class func get(identifer: String) -> [CacheObject] {
+
+    @nonobjc
+    class func get(identifer: String) -> [CacheObject] {
         objc_sync_enter(CacheDBContext.context)
         let objcs = get(with: NSPredicate(format: "cache_identifer = %@", identifer))
         objc_sync_exit(CacheDBContext.context)
         return objcs
     }
-    
-    @nonobjc class func get(with predicate: NSPredicate? = nil) -> [CacheObject] {
+
+    @nonobjc
+    class func get(with predicate: NSPredicate? = nil) -> [CacheObject] {
         objc_sync_enter(CacheDBContext.context)
         let fetch = NSFetchRequest<CacheObject>(entityName: "CacheObject")
         fetch.entity = CacheDBContext.entity
@@ -122,7 +126,7 @@ internal extension CacheObject {
         objc_sync_exit(CacheDBContext.context)
         return result
     }
-    
+
     func update(with size: Int64, expriedInterval interval: TimeInterval) {
         objc_sync_enter(CacheDBContext.context)
         self.data_size = size
@@ -132,8 +136,9 @@ internal extension CacheObject {
         CacheDBContext.saveContext()
         objc_sync_exit(CacheDBContext.context)
     }
-    
-    @discardableResult class func remove(with key: String, identifer: String) -> CacheObject? {
+
+    @discardableResult
+    class func remove(with key: String, identifer: String) -> CacheObject? {
         objc_sync_enter(CacheDBContext.context)
         guard let objc = get(with: NSPredicate(format: "key == %@ AND cache_identifer = %@", key, identifer)).first else {
             objc_sync_exit(CacheDBContext.context)
@@ -144,8 +149,9 @@ internal extension CacheObject {
         objc_sync_exit(CacheDBContext.context)
         return objc
     }
-    
-    @discardableResult class func remove(with predicate: NSPredicate) -> [CacheObject] {
+
+    @discardableResult
+    class func remove(with predicate: NSPredicate) -> [CacheObject] {
         objc_sync_enter(CacheDBContext.context)
         let objcs = get(with: predicate)
         objcs.forEach {
@@ -155,8 +161,9 @@ internal extension CacheObject {
         objc_sync_exit(CacheDBContext.context)
         return objcs
     }
-    
-    @discardableResult class func clean(identifer: String) -> [CacheObject] {
+
+    @discardableResult
+    class func clean(identifer: String) -> [CacheObject] {
         objc_sync_enter(CacheDBContext.context)
         let objcs = get(with: NSPredicate(format: "cache_identifer = %@", identifer))
         objcs.forEach {

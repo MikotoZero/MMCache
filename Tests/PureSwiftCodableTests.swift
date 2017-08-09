@@ -10,11 +10,10 @@ import Foundation
 import XCTest
 import MMCache
 
-
 // MARK: - Struct
 struct Foo {
     let foo: String
-    
+
     init(_ foo: String) {
         self.foo = foo
     }
@@ -24,7 +23,7 @@ extension Foo: Encodable {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(foo, forKey: "foo")
     }
-    
+
     init?(coder aDecoder: NSCoder) {
         guard let foo = aDecoder.decodeObject(forKey: "foo") as? String else { return nil }
         self.foo = foo
@@ -41,7 +40,7 @@ extension Foo: CustomStringConvertible {
 class Bar: Encodable {
     let bar: String
     let foo: Foo?
-    
+
     init(_ bar: String, foo: Foo? = nil) {
         self.bar = bar
         self.foo = foo
@@ -51,7 +50,7 @@ class Bar: Encodable {
         aCoder.encode(bar, forKey: "bar")
         aCoder.encode(foo, forKey: "foo")
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         guard let bar = aDecoder.decodeObject(forKey: "bar") as? String else { return nil }
         self.bar = bar
@@ -75,7 +74,7 @@ extension Quzz: Encodable {
             aCoder.encode(x, forKey: "B")
         }
     }
-    
+
     init?(coder aDecoder: NSCoder) {
         guard let s = aDecoder.decodeObject(forKey: "self") as? String else { return nil }
         switch s {
@@ -91,7 +90,7 @@ extension Quzz: Encodable {
 }
 
 extension Quzz: Equatable {
-    static func ==(lsh: Quzz, rsh: Quzz) -> Bool {
+    static func == (lsh: Quzz, rsh: Quzz) -> Bool {
         switch (lsh, rsh) {
         case (.A, .A): return true
         case let (.B(l), .B(r)): return l == r
@@ -102,11 +101,11 @@ extension Quzz: Equatable {
 
 // MARK: - Test
 class PureSwiftCodableTests: XCTestCase {
-    
+
     override func setUp() {
         super.setUp()
     }
-    
+
     override func tearDown() {
         super.tearDown()
     }
@@ -118,18 +117,18 @@ class PureSwiftCodableTests: XCTestCase {
         XCTAssertNotNil(unarchive)
         XCTAssertEqual(unarchive?.foo, foo.foo)
     }
-    
+
     func testSwiftClass() {
         let bar = Bar("bar")
         let data = bar.archive()
         let unarchive = Bar(unarchive: data)
         XCTAssertNotNil(unarchive)
         XCTAssertEqual(unarchive?.bar, bar.bar)
-        
+
         let errorBaz = Bar(unarchive: Foo("foo").archive())
         XCTAssertNil(errorBaz)
     }
-    
+
     func testEnum() {
         let quzz = Quzz.A
         let data = quzz.archive()
@@ -137,7 +136,7 @@ class PureSwiftCodableTests: XCTestCase {
         XCTAssertNotNil(unarchive)
         XCTAssertEqual(unarchive, quzz)
     }
-    
+
     func testNestType() {
         let foo = Foo("foo")
         let bar = Bar("bar", foo: foo)

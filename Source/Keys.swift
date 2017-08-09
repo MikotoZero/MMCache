@@ -24,7 +24,7 @@ public struct Key<T>: KeyType {
     public let key: String
     public let level: Level
     public let expriedInterval: TimeInterval
-    
+
     public init(_ key: String, level: Level = .cache, expriedInterval interval: TimeInterval = 3600 * 365 * 10) {
         self.key = key
         self.level = level
@@ -37,12 +37,10 @@ public struct SwiftKey<T>: KeyType where T: Encodable {
     public let key: String
     public let level: Level
     public let expriedInterval: TimeInterval
-    
+
     public init(_ key: String, level: Level = .cache, expriedInterval interval: TimeInterval = 3600 * 365 * 10) {
         self.key = key
         self.level = level
         self.expriedInterval = interval
     }
 }
-
-

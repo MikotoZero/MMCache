@@ -12,15 +12,15 @@ import Foundation
 private class _EncoderWrap <T: Encodable>: NSObject, NSSecureCoding {
     static var supportsSecureCoding: Bool { return true }
     let object: T?
-    
+
     init(_ object: T) {
         self.object = object
     }
-    
+
     func encode(with aCoder: NSCoder) {
         object?.encode(with: aCoder)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         object = T(coder: aDecoder)
         super.init()
@@ -39,7 +39,7 @@ public extension Encodable {
     func archive() -> Data {
         return NSKeyedArchiver.archivedData(withRootObject: _EncoderWrap(self))
     }
-    
+
     init?(unarchive data: Data) {
         guard let wrap = NSKeyedUnarchiver.unarchiveObject(with: data) as? _EncoderWrap<Self> else { return nil }
         guard let object = wrap.object else { return nil }
@@ -49,7 +49,7 @@ public extension Encodable {
 
 // MARK: - NSCoder、NSKeyedArchiver、NSKeyedUnarchiver 扩展，以支持 Encodable 类型
 public extension NSCoder {
-    
+
     /// Encode 纯swift类型，需要此类型实现 Encodable 协议
     ///
     /// - Parameter instance: 要 encode 的实例
@@ -57,7 +57,7 @@ public extension NSCoder {
         guard let instance = instance else { return }
         encodeRootObject(_EncoderWrap(instance))
     }
-    
+
     /// Encode 纯swift类型，需要此类型实现 Encodable 协议
     ///
     /// - Parameters:
@@ -67,7 +67,7 @@ public extension NSCoder {
         guard let instance = instance else { return }
         encode(_EncoderWrap(instance), forKey: key)
     }
-    
+
     /// Decode 纯swift类型，需要此类型实现 Encodable 协议
     ///
     /// - Returns: 返回 decode 出的实例，若失败或类型不符合，则返回nil
@@ -75,7 +75,7 @@ public extension NSCoder {
         guard let wrap = decodeObject() as? _EncoderWrap<T> else { return nil }
         return wrap.object
     }
-    
+
     /// Decode 纯swift类型，需要此类型实现 Encodable 协议
     ///
     /// - Parameter key: 对应的 encode 的 键
@@ -87,7 +87,7 @@ public extension NSCoder {
 }
 
 public extension NSKeyedArchiver {
-    
+
     /// 序列化 纯swift类型的实例，需要此类型实现 Encodable 协议
     ///
     /// - Parameter instance: 要序列化的实例
@@ -98,7 +98,7 @@ public extension NSKeyedArchiver {
 }
 
 public extension NSKeyedUnarchiver {
-    
+
     /// 反序列化 纯swift类型的实例，需要此类型实现 Encodable 协议
     ///
     /// - Parameter data: 要反序列化的源 Data
@@ -108,4 +108,3 @@ public extension NSKeyedUnarchiver {
         return wrap.object
     }
 }
-

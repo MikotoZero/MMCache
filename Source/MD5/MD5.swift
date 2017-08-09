@@ -14,12 +14,12 @@ private typealias Word = UInt32
 
 private struct Digest {
     let digest: [Byte]
-    
+
     init(_ digest: [Byte]) {
         assert(digest.count == 16)
         self.digest = digest
     }
-    
+
     var checksum: String {
         return encodeMD5(digest: digest)
     }
@@ -51,7 +51,7 @@ private func md5(_ bytes: [Byte]) -> Digest {
     // Initialization
     let s: [Word] = [
         7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22, 7, 12, 17, 22,
-        5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20, 5,  9, 14, 20,
+        5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20, 5, 9, 14, 20,
         4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23, 4, 11, 16, 23,
         6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21, 6, 10, 15, 21
     ]
@@ -73,25 +73,25 @@ private func md5(_ bytes: [Byte]) -> Digest {
         0x6fa87e4f, 0xfe2ce6e0, 0xa3014314, 0x4e0811a1,
         0xf7537e82, 0xbd3af235, 0x2ad7d2bb, 0xeb86d391
     ]
-    
+
     var a0: Word = 0x67452301 // A
     var b0: Word = 0xefcdab89 // B
     var c0: Word = 0x98badcfe // C
     var d0: Word = 0x10325476 // D
-    
+
     // Pad message with a single bit "1"
     var message = bytes
-    
+
     let originalLength = bytes.count
     let bitLength = UInt64(originalLength * 8)
-    
+
     message.append(0x80)
-    
+
     // Pad message with bit "0" until message length is 64 bits fewer than 512
     repeat {
         message.append(0x0)
     } while (message.count * 8) % 512 != 448
-    
+
     message.append(Byte((bitLength >> 0) & 0xFF))
     message.append(Byte((bitLength >> 8) & 0xFF))
     message.append(Byte((bitLength >> 16) & 0xFF))
@@ -100,23 +100,23 @@ private func md5(_ bytes: [Byte]) -> Digest {
     message.append(Byte((bitLength >> 40) & 0xFF))
     message.append(Byte((bitLength >> 48) & 0xFF))
     message.append(Byte((bitLength >> 56) & 0xFF))
-    
+
     let newBitLength = message.count * 8
-    
+
     assert(newBitLength % 512 == 0)
-    
+
     // Transform
-    
+
     let chunkLength = 512 // 512-bit
     let chunkLengthInBytes = chunkLength / 8 // 64-bytes
     let totalChunks = newBitLength / chunkLength
-    
+
     assert(totalChunks >= 1)
-    
+
     for chunk in 0..<totalChunks {
         let index = chunk*chunkLengthInBytes
         var chunk: [Byte] = Array(message[index..<index+chunkLengthInBytes]) // 512-bit/64-byte chunk
-        
+
         // break chunk into sixteen 32-bit words
         var M: [Word] = []
         for j in 0..<16 {
@@ -125,21 +125,21 @@ private func md5(_ bytes: [Byte]) -> Digest {
             let m2 = Word(chunk[4*j+2]) << 16
             let m3 = Word(chunk[4*j+3]) << 24
             let m = Word(m0 | m1 | m2 | m3)
-            
+
             M.append(m)
         }
-        
+
         assert(M.count == 16)
-        
+
         var A: Word = a0
         var B: Word = b0
         var C: Word = c0
         var D: Word = d0
-        
+
         for i in 0..<64 {
             var f: Word = 0
             var g: Int = 0
-            
+
             if i < 16 {
                 f = F(B, C, D)
                 g = i
@@ -153,56 +153,56 @@ private func md5(_ bytes: [Byte]) -> Digest {
                 f = I(B, C, D)
                 g = ((7*i) % 16)
             }
-            
+
             let dTemp = D
             D = C
             C = B
-            
+
             let x = A &+ f &+ K[i] &+ M[g]
             let by = s[i]
-            
+
             B = B &+ rotateLeft(x, by: by)
             A = dTemp
         }
-        
+
         a0 = a0 &+ A
         b0 = b0 &+ B
         c0 = c0 &+ C
         d0 = d0 &+ D
     }
-    
+
     assert(a0 >= 0)
     assert(b0 >= 0)
     assert(c0 >= 0)
     assert(d0 >= 0)
-    
+
     let digest0: Byte =   Byte((a0 >> 0) & 0xFF)
     let digest1: Byte =   Byte((a0 >> 8) & 0xFF)
     let digest2: Byte =   Byte((a0 >> 16) & 0xFF)
     let digest3: Byte =   Byte((a0 >> 24) & 0xFF)
-    
+
     let digest4: Byte =   Byte((b0 >> 0) & 0xFF)
     let digest5: Byte =   Byte((b0 >> 8) & 0xFF)
     let digest6: Byte =   Byte((b0 >> 16) & 0xFF)
     let digest7: Byte =   Byte((b0 >> 24) & 0xFF)
-    
+
     let digest8: Byte =   Byte((c0 >> 0) & 0xFF)
     let digest9: Byte =   Byte((c0 >> 8) & 0xFF)
     let digest10: Byte =  Byte((c0 >> 16) & 0xFF)
     let digest11: Byte =  Byte((c0 >> 24) & 0xFF)
-    
+
     let digest12: Byte =  Byte((d0 >> 0) & 0xFF)
     let digest13: Byte =  Byte((d0 >> 8) & 0xFF)
     let digest14: Byte =  Byte((d0 >> 16) & 0xFF)
     let digest15: Byte =  Byte((d0 >> 24) & 0xFF)
-    
+
     let digest = [
         digest0, digest1, digest2, digest3, digest4, digest5, digest6, digest7,
-        digest8, digest9, digest10, digest11, digest12, digest13, digest14, digest15,
+        digest8, digest9, digest10, digest11, digest12, digest13, digest14, digest15
         ]
-    
+
     assert(digest.count == 16)
-    
+
     return Digest(digest)
 }
 
@@ -210,7 +210,7 @@ private func md5(_ bytes: [Byte]) -> Digest {
 
 private func encodeMD5(digest: [Byte]) -> String {
     assert(digest.count == 16)
-    
+
     let str = digest.reduce("") { str, byte in
         let radix = 16
         let s = String(byte, radix: radix)
@@ -218,7 +218,7 @@ private func encodeMD5(digest: [Byte]) -> String {
         let sum = str + (byte < Byte(radix) ? "0" : "") + s
         return sum
     }
-    
+
     return str
 }
 
@@ -228,7 +228,7 @@ internal extension String {
     var md5: String {
         return encodeMD5(digest: md5Digest)
     }
-    
+
     private var md5Digest: [Byte] {
         let bytes = [Byte](self.utf8)
         let digest = MMCache.md5(bytes)

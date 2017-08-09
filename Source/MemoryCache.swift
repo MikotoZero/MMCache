@@ -18,10 +18,10 @@ private class _Node<T> {
         get { return _Node.getCopy(_value) }
     }
     var count: Int = 0
-    
+
     fileprivate weak var linkedList: _List<T>?
     private var _value: T
-    
+
     init(key: String, value: T) {
         self.key = key
         self._value = _Node.getCopy(value)
@@ -55,7 +55,7 @@ private extension _List {
         tail = tail ?? node
         count += 1
     }
-    
+
     func remove(_ node: Node) {
         node.pre?.next = node.next
         node.next?.pre = node.pre
@@ -63,19 +63,19 @@ private extension _List {
         tail = node === tail ? tail?.pre : tail
         count -= 1
     }
-    
+
     func dropHead() -> Node? {
         guard let temp = head else { return nil }
         remove(temp)
         return temp
     }
-    
+
     func dropTail() -> Node? {
         guard let temp = tail else { return nil }
         remove(temp)
         return temp
     }
-    
+
     func reset() {
         head = nil
         tail = nil
@@ -99,14 +99,13 @@ public class MemoryCache<Element> {
     /// 热数据缓冲池大小，值为 capacity 一半，向上取整
     fileprivate var buffer: Int { return Int(ceil(Double(capacity) / 2)) }
 
-    
     /// 缓存的容量，取自然数，设置小于等于0的值时默认取1
     public let capacity: Int
     /// 淘汰等级，缓存需要淘汰时，会淘汰访问次数小于此值的数据；默认为2
     public var trimLevel: UInt32
     /// 当前缓存个数
     public var currentSize: Int { return source.count }
-    
+
     /// 实例化内存缓存，设置缓存容量和淘汰等级, 缓存使用 LUR-2 算法淘汰冷数据。所有数据初始加入时为冷数据，当冷数据访问次数大于淘汰等级时，变为热数据并清0访问次数；数据需要淘汰时，缓存会淘汰访问次数小于等级的零数据
     ///
     /// - Parameters:
@@ -130,7 +129,7 @@ extension MemoryCache {
         // 新数据添加在冷链头部
         coldChain.push(node)
      }
-    
+
     // 获取数据节点
     fileprivate func get(_ key: String) -> Node? {
         guard let node = source[key] else { return nil }
@@ -138,7 +137,7 @@ extension MemoryCache {
         node.count += 1
         return node
     }
-    
+
     // 删除数据节点
     fileprivate func remove(_ node: Node) {
         // 判断节点在冷链还是热链中，删除之
@@ -184,7 +183,7 @@ extension MemoryCache {
 // MARK: - Public
 // MARK: 外部操作
 extension MemoryCache {
-    
+
     /// 根据 key 向缓存中添加数据， 如果对应的 key 已存在，覆盖原数据
     ///
     /// - Parameters:
@@ -204,7 +203,7 @@ extension MemoryCache {
         }
         pthread_mutex_unlock(lock)
     }
-    
+
     /// 获取指定 key 对应的缓存数据
     ///
     /// - Parameter key: 要获取的数据对应的 key
@@ -215,7 +214,7 @@ extension MemoryCache {
         pthread_mutex_unlock(lock)
         return node?.value
     }
-    
+
     /// 从缓存中删除指定 key 对应的数据
     ///
     /// - Parameter key: 要删除的数据对应的 key
@@ -233,7 +232,7 @@ extension MemoryCache {
         source.removeValue(forKey: node.key)
         return node.value
     }
-    
+
     /// 判断缓存中是否有指定 key 对应的数据
     ///
     /// - Parameter key: 查找的 key
