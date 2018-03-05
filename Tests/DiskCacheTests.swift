@@ -9,7 +9,7 @@
 import XCTest
 import MMCache
 
-class TestPureSwiftClass: Encodable {
+class TestPureSwiftClass: MMCache.Encodable {
     let intL: Int
     var strV: String
     var nest: TestPureSwiftClass?

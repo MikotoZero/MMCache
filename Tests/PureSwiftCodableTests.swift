@@ -19,7 +19,7 @@ struct Foo {
     }
 }
 
-extension Foo: Encodable {
+extension Foo: MMCache.Encodable {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(foo, forKey: "foo")
     }
@@ -37,7 +37,7 @@ extension Foo: CustomStringConvertible {
 }
 
 // MARK: - Class
-class Bar: Encodable {
+class Bar: MMCache.Encodable {
     let bar: String
     let foo: Foo?
 
@@ -64,7 +64,7 @@ enum Quzz {
     case B(String)
 }
 
-extension Quzz: Encodable {
+extension Quzz: MMCache.Encodable {
     func encode(with aCoder: NSCoder) {
         switch self {
         case .A:

@@ -20,11 +20,13 @@ private class CacheDBContext {
     }()
 
     static var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
-        guard
-            let modelURL = Bundle(for: MMCache.CacheObject).url(forResource: "MMCache", withExtension: "momd"),
-            let model = NSManagedObjectModel(contentsOf: modelURL)
-            else {
-                fatalError("MMCache.DiskCache.CoreData Error: Load DB cache file fail.")
+        guard let modelURL = Bundle(for: MMCache.CacheObject.self).url(forResource: "MMCache", withExtension: "momd") else {
+            fatalError("MMCache.DiskCache.CoreData Error: Load DB cache file fail.")
+        }
+        // fix Xcode9 beta5 issue
+        let optionalModel: NSManagedObjectModel? = NSManagedObjectModel(contentsOf: modelURL)
+        guard let model = optionalModel else {
+            fatalError("MMCache.DiskCache.CoreData Error: Load DB cache file fail.")
         }
         let coordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         addPersistentStore(coordinator)

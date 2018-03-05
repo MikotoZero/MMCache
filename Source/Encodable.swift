@@ -14,6 +14,7 @@ private class _EncoderWrap <T: Encodable>: NSObject, NSSecureCoding {
     let object: T?
 
     init(_ object: T) {
+        NSKeyedArchiver.setClassName("_MMCache_EncoderWrap__\(type(of: object))", for: _EncoderWrap<T>.self)
         self.object = object
     }
 
@@ -41,6 +42,7 @@ public extension Encodable {
     }
 
     init?(unarchive data: Data) {
+        NSKeyedUnarchiver.setClass(_EncoderWrap<Self>.self, forClassName: "_MMCache_EncoderWrap__\(Self.self)")
         guard let wrap = NSKeyedUnarchiver.unarchiveObject(with: data) as? _EncoderWrap<Self> else { return nil }
         guard let object = wrap.object else { return nil }
         self = object
